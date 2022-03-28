@@ -91,7 +91,7 @@ CREATE TABLE students_admitted_to_exams (
     student_id, -- FK & PK
     academic_year, -- FK & PK
     exam_id REFERENCES exams(exam_id) NOT NULL, -- FK & PK
-    points_so_far NUMBER(2) NOT NULL CHECK(points_so_far BETWEEN 0 and 100), -- FIXME: LENGTH("100") > 2
+    points_so_far NUMBER(2) NOT NULL CHECK(points_so_far BETWEEN 0 and 99),
     FOREIGN KEY (academic_year, student_id) REFERENCES enrolled_students(academic_year, student_id),
     CONSTRAINT pk_students_admitted_to_exams PRIMARY KEY (academic_year, student_id, exam_id)
 );
@@ -147,7 +147,7 @@ CREATE TABLE question_assessments (
     question_number NUMBER(2) CHECK(question_number > 0), -- PK TODO: number generation
     lecturer_id REFERENCES lecturers(lecturer_id) NOT NULL, -- FK
     time_of_assessments TIMESTAMP NOT NULL,
-    awarded_points NUMBER(2) NOT NULL CHECK(awarded_points BETWEEN 0 and 100), -- TODO: LENGTH("100") > 2
+    awarded_points NUMBER(3) NOT NULL CHECK(awarded_points BETWEEN 0 and 100),
     "comment" VARCHAR2(200),
     CONSTRAINT pk_question_assessments PRIMARY KEY (exam_elaboration_id, question_number)
 );
