@@ -197,11 +197,11 @@ INSERT INTO rooms (room_label, capacity)
 
 -- Lecturers
 INSERT INTO lecturers (lecturer_id, room_label, email, phone_number)
-    VALUES (220300, 'L206', 'ikonrad@fit.cz', '420732657800');
+    VALUES (220300, 'L206', 'ikonrad@fit.cz', '+420732657800');
 INSERT INTO lecturers (lecturer_id, room_label, email)
     VALUES (221456, 'L108', 'imesner@fit.cz');
 INSERT INTO lecturers (lecturer_id, room_label, email, phone_number)
-    VALUES (220546, 'L206', 'klojza@gmail.com', '420721504657');
+    VALUES (220546, 'L206', 'klojza@gmail.com', '+420721504657');
 
 -- Courses
 INSERT INTO courses  (course_id, semester, name, abbreviation, awarded_credits, description, guarantor_id)
