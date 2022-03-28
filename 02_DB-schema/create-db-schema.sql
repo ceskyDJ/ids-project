@@ -8,19 +8,20 @@
 --------------------------------------
 
 ------------------------------------------------------------------------------------------------------------------ RESET
+-- PURGE is used for unnamed linked sequences deletion
 DROP TABLE question_assessments;
-DROP TABLE exam_elaborations;
+DROP TABLE exam_elaborations PURGE;
 DROP TABLE registered_exam_dates;
 DROP TABLE exams_in_rooms;
 DROP TABLE exam_dates;
 DROP TABLE students_admitted_to_exams;
-DROP TABLE exams;
+DROP TABLE exams PURGE;
 DROP TABLE lecturers_teaching_courses;
-DROP TABLE courses;
+DROP TABLE courses PURGE;
 DROP TABLE lecturers;
 DROP TABLE rooms;
 DROP TABLE enrolled_students;
-DROP TABLE users;
+DROP TABLE users PURGE;
 
 ----------------------------------------------------------------------------------------------------------------- TABLES
 -- Users
