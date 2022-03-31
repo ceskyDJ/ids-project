@@ -3,7 +3,7 @@
     "length": {
         "type": "number",
         "subtype": "u64",
-        "constant": 1
+        "constant": 10
     },
     "content": {
         "type": "object",
@@ -19,7 +19,7 @@
                     "weight": 0.8,
                     "type": "string",
                     "format": {
-                        "format": "{start}{num}",
+                        "format": "lower({start}{num})",
                         "arguments": {
                             "start": {
                                 "type": "string",
@@ -70,7 +70,7 @@
                     "weight": 0.15,
                     "type": "string",
                     "format": {
-                        "format": "i{name}",
+                        "format": "lower(i{name})",
                         "arguments": {
                             "name": {
                                 "type": "same_as",
@@ -81,8 +81,16 @@
                 },
                 {
                     "weight": 0.05,
-                    "type": "same_as",
-                    "ref": "users.content.last_name"
+                    "type": "string",
+                    "format": {
+                        "format": "lower({name})",
+                        "arguments": {
+                            "name": {
+                                "type": "same_as",
+                                "ref": "users.content.last_name"
+                            }
+                        }
+                    }
                 }
             ]
         },
@@ -106,7 +114,7 @@
             "type": "date_time",
             "format": "%d-%m-%Y",
             "subtype": "naive_date",
-            "begin": "01-01-1990",
+            "begin": "01-01-1960",
             "end": "31-12-2002"
         }
     }
