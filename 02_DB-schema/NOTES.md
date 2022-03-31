@@ -1,10 +1,16 @@
 # Notes for automatic data generation
 
-Manual: https://www.getsynth.com/docs/content/index
+**Installation:** `curl -sSL https://getsynth.com/install | sh`\
+**Manual:** https://www.getsynth.com/docs/content/index
 
-## Needed changes
+## Custom functions
 
-### Users
+There are some custom defined functions. Here is a complete list in this document.
 
-- `login` column needs to be converted to lower case before converting CSV
-to SQL INSERT command
+### `lower(value)`
+
+Converts string in `value` to lower case.
+
+### `inc(value)`
+
+Increments number in `value` (adds 1).
