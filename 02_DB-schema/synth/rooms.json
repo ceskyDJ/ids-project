@@ -1,0 +1,25 @@
+{
+    "type": "array",
+    "length": {
+        "type": "number",
+        "subtype": "u64",
+        "constant": 10
+    },
+    "content": {
+        "type": "object",
+        "room_label": {
+            "type": "string",
+            "pattern": "[A-Z]([1-3]|0[1-2])[0-9]{2}"
+        },
+        "capacity": {
+            "type": "number",
+            "range": {
+                "low": 0,
+                "high": 999,
+                "step": 1,
+                "include_low": false,
+                "include_high": true
+            }
+        }
+    }
+}

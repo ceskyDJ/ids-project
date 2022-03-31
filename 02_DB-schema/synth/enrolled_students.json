@@ -1,0 +1,47 @@
+{
+    "type": "array",
+    "length": {
+        "type": "number",
+        "subtype": "u64",
+        "constant": 10
+    },
+    "content": {
+        "type": "object",
+        "student_id": {
+            "type": "same_as",
+            "ref": "users.content.user_id"
+        },
+        "academic_year": {
+            "type": "string",
+            "format": {
+                "format": "{year}/inc({year})",
+                "arguments": {
+                    "year": {
+                        "type": "number",
+                        "range": {
+                            "low": 2001,
+                            "high": 2022,
+                            "step": 1
+                        }
+                    }
+                }
+            }
+        },
+        "year_of_study": {
+            "type": "number",
+            "range": {
+                "low": 1,
+                "high": 6,
+                "step": 1
+            }
+        },
+        "study_program": {
+            "type": "string",
+            "categorical": {
+                "bachelor": 60,
+                "master": 35,
+                "doctoral": 5
+            }
+        }
+    }
+}

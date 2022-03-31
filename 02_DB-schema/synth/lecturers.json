@@ -1,0 +1,55 @@
+{
+    "type": "array",
+    "length": {
+        "type": "number",
+        "subtype": "u64",
+        "constant": 10
+    },
+    "content": {
+        "type": "object",
+        "lecturer_id": {
+            "type": "same_as",
+            "ref": "users.content.user_id"
+        },
+        "room_label": {
+            "type": "same_as",
+            "ref": "rooms.content.room_label"
+        },
+        "email": {
+            "type": "unique",
+            "content": {
+                "type": "one_of",
+                "variants": [
+                    {
+                        "type": "string",
+                        "format": {
+                            "format": "{name}@{provider}",
+                            "arguments": {
+                                "name": {
+                                    "type": "same_as",
+                                    "ref": "users.content.last_name"
+                                },
+                                "provider": {
+                                    "type": "string",
+                                    "faker": {
+                                        "generator": "free_email_provider"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "faker": {
+                            "generator": "free_email"
+                        }
+                    }
+                ]
+            }
+        },
+        "phone_number": {
+            "type": "string",
+            "pattern": "\\+[0-9]{12}"
+        }
+    }
+}
