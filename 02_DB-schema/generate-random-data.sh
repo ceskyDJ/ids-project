@@ -34,7 +34,7 @@ function parse() {
 
     # Constructing data for SQL query
     # Column names are encapsulated due to name collusion prevention (with built-in types)
-    columns=$(echo "$keys" | sed -E 's/(.+)/"\1"/' | tr '\n' ',' | sed 's/,$//g' | sed 's/,/, /g')
+    columns=$(echo "$keys" | sed -E 's/(.+)/"\1"/' | tr '\n' ',' | sed 's/,$//g' | sed 's/,/, /g' | sed "s/'//")
     data=$(echo "$values" | tr '\n' ',' | sed 's/,$//g' | sed 's/,/, /g' | tr '"' "'" | custom_functions)
 
     # Dividing inserts by the table and adding simple human readable header
