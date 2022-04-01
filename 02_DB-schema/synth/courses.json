@@ -1,0 +1,103 @@
+{
+    "type": "array",
+    "length": {
+        "type": "number",
+        "subtype": "u64",
+        "constant": 10
+    },
+    "content": {
+        "type": "object",
+        "course_id": {
+            "type": "number",
+            "subtype": "u64",
+            "id": {}
+        },
+        "semester": {
+            "type": "one_of",
+            "variants": [
+                {
+                    "weight": 0.5,
+                    "type": "string",
+                    "pattern": "summer"
+                },
+                {
+                    "weight": 0.5,
+                    "type": "string",
+                    "pattern": "winter"
+                }
+            ]
+        },
+        "name": {
+            "type": "string",
+            "faker": {
+                "generator": "industry"
+            }
+        },
+        "abbreviation": {
+            "type": "string",
+            "format": {
+                "format": "{part1}{part2}",
+                "arguments": {
+                    "part1": {
+                        "type": "string",
+                        "faker": {
+                            "generator": "country_code"
+                        }
+                    },
+                    "part2": {
+                        "type": "string",
+                        "faker": {
+                            "generator": "country_code"
+                        }
+                    }
+                }
+            }
+        },
+        "awarded_credits": {
+            "type": "number",
+            "range": {
+                "low": 1,
+                "high": 15,
+                "include_low": true,
+                "include_high": true
+            }
+        },
+        "guarantor_id": {
+            "type": "same_as",
+            "ref": "lecturers.content.lecturer_id"
+        },
+        "description": {
+            "type": "string",
+            "format": {
+                "format": "{part1} {part2} {part3} {part4}",
+                "arguments": {
+                    "part1": {
+                        "type": "string",
+                        "faker": {
+                            "generator": "industry"
+                        }
+                    },
+                    "part2": {
+                        "type": "string",
+                        "faker": {
+                            "generator": "bs_verb"
+                        }
+                    },
+                    "part3": {
+                        "type": "string",
+                        "faker": {
+                            "generator": "bs_adj"
+                        }
+                    },
+                    "part4": {
+                        "type": "string",
+                        "faker": {
+                            "generator": "bs"
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
