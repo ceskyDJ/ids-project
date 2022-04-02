@@ -149,7 +149,7 @@ CREATE TABLE question_assessments (
     lecturer_id REFERENCES lecturers(lecturer_id) NOT NULL, -- FK
     time_of_assessments TIMESTAMP NOT NULL,
     awarded_points NUMBER(3) NOT NULL CHECK(awarded_points BETWEEN 0 and 100),
-    "comment" VARCHAR2(200),
+    "comment" VARCHAR2(500),
     CONSTRAINT pk_question_assessments PRIMARY KEY (exam_elaboration_id, question_number)
 );
 
