@@ -64,7 +64,6 @@ CREATE TABLE courses (
     semester VARCHAR2(6) NOT NULL CHECK(semester IN ('summer', 'winter')),
     name VARCHAR2(70) NOT NULL,
     awarded_credits NUMBER(2) NOT NULL CHECK(awarded_credits > 0),
-    guarantor_id REFERENCES lecturers(lecturer_id) NOT NULL, -- FK
     description VARCHAR2(1000)
 );
 
