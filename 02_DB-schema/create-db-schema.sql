@@ -79,7 +79,7 @@ CREATE TABLE lecturers_teaching_courses (
 CREATE TABLE course_guarantors (
     course_abbreviation REFERENCES courses(course_abbreviation), -- FK & PK
     academic_year CHAR(9) NOT NULL CHECK(REGEXP_LIKE(academic_year, '^\d{4}/\d{4}$')), -- PK
-    lecturer_id REFERENCES lecturers(lecturer_id) NOT NULL, -- FK
+    guarantor_id REFERENCES lecturers(lecturer_id) NOT NULL, -- FK
     CONSTRAINT pk_course_guarantors PRIMARY KEY (course_abbreviation, academic_year)
 );
 
