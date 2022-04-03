@@ -1,0 +1,2899 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   sodipodi:docname="funkcni_zavislosti.svg">
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="marker5574"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path5572" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         id="path1212" />
+    </marker>
+    <marker
+       style="overflow:visible;"
+       id="Arrow2Mend"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.6) rotate(180) translate(0,0)"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         id="path1097" />
+    </marker>
+    <marker
+       style="overflow:visible;"
+       id="Arrow2Lend"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lend"
+       inkscape:isstock="true">
+      <path
+         transform="scale(1.1) rotate(180) translate(1,0)"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         id="path1091" />
+    </marker>
+    <marker
+       style="overflow:visible;"
+       id="Arrow1Lend"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path1073" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-4"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-5" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-2"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-1" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-0"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-3" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-4"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-4" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-41"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-6" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-6"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-1" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-6-2"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-1-0" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-6-5"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-1-8" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-46"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-0" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-5"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-5" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-2"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-11" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-460"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-53" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-9"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-69" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-8"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-9" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-57"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-3" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-1"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-7" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-3"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-2" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-83"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-13" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-0"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-8" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-7"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-45" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-61"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-48" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-49"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-54" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-76"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-12" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-62"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-90" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-81"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-72" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-54"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-79" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-10"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-81" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-58"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-21" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-82"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-58" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-23"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-88" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-60"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-124" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-40"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-60" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-40-0"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-60-6" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-40-4"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-60-1" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-40-5"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-60-16" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-40-3"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-60-9" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-8-7-52"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path1212-2-11-84" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8284272"
+     inkscape:cx="634.23697"
+     inkscape:cy="517.87638"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1440"
+     inkscape:window-height="837"
+     inkscape:window-x="1912"
+     inkscape:window-y="88"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Vrstva 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g3152"
+       inkscape:label="users"
+       transform="matrix(1.1142662,0,0,1.1143645,-5.5815702,7.2122293)"
+       style="stroke-width:0.897412">
+      <text
+         xml:space="preserve"
+         style="font-size:2.72436px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.229206"
+         x="33.685776"
+         y="9.2138195"
+         id="text835"><tspan
+           sodipodi:role="line"
+           x="33.685776"
+           y="9.2138195"
+           style="stroke-width:0.229206"
+           id="tspan837">users</tspan></text>
+      <g
+         id="g2934"
+         transform="translate(1.1358955,-0.26726953)"
+         style="stroke-width:0.897412"
+         inkscape:label="content">
+        <g
+           id="g905"
+           transform="matrix(0.96532352,0,0,0.96532352,-6.0784048,-35.459195)"
+           style="stroke-width:0.897412"
+           inkscape:label="login">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.131933;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4"
+             width="13.628448"
+             height="4.9348965"
+             x="51.252369"
+             y="50.165733" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.23744"
+             x="54.203491"
+             y="53.473728"
+             id="text864"><tspan
+               sodipodi:role="line"
+               id="tspan862"
+               x="54.203491"
+               y="53.473728"
+               style="stroke-width:0.23744">login</tspan></text>
+        </g>
+        <g
+           id="g1064"
+           transform="matrix(0.96532352,0,0,0.96532352,-6.0784048,-35.459195)"
+           style="stroke-width:0.897412"
+           inkscape:label="password">
+          <g
+             id="g1057"
+             transform="translate(0.06681738,0.13363476)"
+             style="stroke-width:0.897412">
+            <g
+               id="g1052"
+               style="stroke-width:0.897412">
+              <text
+                 xml:space="preserve"
+                 style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.23744"
+                 x="51.513023"
+                 y="59.672585"
+                 id="text868"><tspan
+                   sodipodi:role="line"
+                   id="tspan866"
+                   x="51.513023"
+                   y="59.672585"
+                   style="stroke-width:0.23744">password</tspan></text>
+            </g>
+          </g>
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.135426;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8"
+             width="14.359517"
+             height="4.9348965"
+             x="50.986736"
+             y="56.432076" />
+        </g>
+        <g
+           id="g965"
+           transform="matrix(0.96532352,0,0,0.96532352,-7.0361872,-35.596021)"
+           style="stroke-width:0.897412"
+           inkscape:label="first_name">
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.23744"
+             x="51.691936"
+             y="66.056664"
+             id="text872"><tspan
+               sodipodi:role="line"
+               id="tspan870"
+               x="51.691936"
+               y="66.056664"
+               style="stroke-width:0.23744">first_name</tspan></text>
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.147324;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6"
+             width="17.039339"
+             height="4.921638"
+             x="50.987957"
+             y="62.64558" />
+        </g>
+        <g
+           id="g1002"
+           transform="matrix(0.96532352,0,0,0.96532352,-6.0784048,-35.459195)"
+           style="stroke-width:0.897412"
+           inkscape:label="last_name">
+          <text
+             xml:space="preserve"
+             style="font-size:2.83777px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.238747"
+             x="50.796062"
+             y="72.31884"
+             id="text876"
+             transform="scale(1.0056882,0.99434401)"><tspan
+               sodipodi:role="line"
+               id="tspan874"
+               x="50.796062"
+               y="72.31884"
+               style="stroke-width:0.238747">last_name</tspan></text>
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.146923;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-8"
+             width="16.945292"
+             height="4.9220843"
+             x="50.137287"
+             y="68.551231" />
+        </g>
+        <g
+           id="g994"
+           transform="matrix(0.96532352,0,0,0.96532352,-7.94836,-36.645021)"
+           style="stroke-width:0.897412"
+           inkscape:label="date_of_birth">
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.23744"
+             x="50.648808"
+             y="79.233253"
+             id="text880"><tspan
+               sodipodi:role="line"
+               id="tspan878"
+               x="50.648808"
+               y="79.233253"
+               style="stroke-width:0.23744">date_of_birth</tspan></text>
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.163041;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1"
+             width="20.943329"
+             height="4.9041247"
+             x="49.910034"
+             y="75.978004" />
+        </g>
+        <g
+           id="g2600"
+           style="stroke-width:0.897412"
+           inkscape:label="user_id_PK">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:1;stroke:#000000;stroke-width:0.127358;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841"
+             width="13.155861"
+             height="4.7637715"
+             x="12.747589"
+             y="24.417303"
+             inkscape:label="user_id" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.72436px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.229206"
+             x="14.025663"
+             y="27.816624"
+             id="text845"><tspan
+               sodipodi:role="line"
+               id="tspan843"
+               x="14.025663"
+               y="27.816624"
+               style="stroke-width:0.229206">user_id</tspan></text>
+          <rect
+             style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.128417;stroke-miterlimit:4;stroke-dasharray:0.385251, 0.128417;stroke-dashoffset:0;stroke-opacity:0.990769"
+             id="rect841-5-2"
+             width="14.684647"
+             height="6.185411"
+             x="11.99927"
+             y="23.747616" />
+        </g>
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.142938;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+           d="M 26.671265,25.143239 42.316014,21.505948"
+           id="path1068"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.142938;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-4)"
+           d="M 26.683921,23.747616 42.592419,15.239747"
+           id="path1068-0"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.142938;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8)"
+           d="m 26.683921,29.933026 12.65297,9.209803"
+           id="path1068-00"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.142938;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-2)"
+           d="m 26.687958,28.20983 14.709771,4.902932"
+           id="path1068-00-5"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.142938;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-0)"
+           d="M 26.744968,26.510906 41.260903,27.68533"
+           id="path1068-00-2"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <rect
+         style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:0.119334;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect1979"
+         width="53.660496"
+         height="32.771999"
+         x="10.389876"
+         y="10.478373" />
+    </g>
+    <g
+       id="g1587"
+       transform="translate(3.1805074,-43.404568)"
+       inkscape:label="enrolled_students">
+      <g
+         id="g1501"
+         inkscape:label="content">
+        <g
+           id="g1437"
+           inkscape:label="student_id_academic_year_PK">
+          <rect
+             style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.15;stroke-miterlimit:4;stroke-dasharray:0.45, 0.15;stroke-dashoffset:0;stroke-opacity:0.990769"
+             id="rect841-5"
+             width="27.360407"
+             height="13.89248"
+             x="71.413269"
+             y="56.769108" />
+          <g
+             id="g2460"
+             transform="translate(-3.1756238,0.08302999)"
+             inkscape:label="student_id">
+            <rect
+               style="fill:#ff5a4c;fill-opacity:0.615385;stroke:#000000;stroke-width:0.162599;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-2"
+               width="17.229895"
+               height="4.7747478"
+               x="79.335381"
+               y="58.443169" />
+            <text
+               xml:space="preserve"
+               style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+               x="80.319946"
+               y="61.846352"
+               id="text2383"><tspan
+                 sodipodi:role="line"
+                 x="80.319946"
+                 y="61.846352"
+                 style="stroke-width:0.264583"
+                 id="tspan2385">student_id</tspan></text>
+          </g>
+          <g
+             id="g2465"
+             transform="translate(19.597441,3.957286)"
+             inkscape:label="academic_year">
+            <rect
+               style="fill:#ffdd4c;fill-opacity:1;stroke:#000000;stroke-width:0.187439;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-0"
+               width="23.778458"
+               height="4.5976849"
+               x="53.550934"
+               y="60.723446" />
+            <text
+               xml:space="preserve"
+               style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+               x="54.885471"
+               y="63.884693"
+               id="text2451"><tspan
+                 sodipodi:role="line"
+                 x="54.885471"
+                 y="63.884693"
+                 style="stroke-width:0.264583"
+                 id="tspan2453">academic_year</tspan></text>
+          </g>
+        </g>
+        <g
+           id="g960"
+           transform="translate(4.0679687,0.89296875)"
+           inkscape:label="year_of_study">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.142875;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-5"
+             width="22.488291"
+             height="5.3084431"
+             x="105.10165"
+             y="56.569923" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="106.11682"
+             y="60.098213"
+             id="text3521"><tspan
+               sodipodi:role="line"
+               id="tspan3519"
+               x="106.11682"
+               y="60.098213"
+               style="stroke-width:0.264583">year_of_study</tspan></text>
+        </g>
+        <g
+           id="g966"
+           transform="translate(3.5388021,-0.33072917)"
+           inkscape:label="study_program">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.144727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-5-5"
+             width="24.228745"
+             height="5.0228748"
+             x="105.71969"
+             y="64.74189" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="106.95309"
+             y="68.130211"
+             id="text3525"><tspan
+               sodipodi:role="line"
+               id="tspan3523"
+               x="106.95309"
+               y="68.130211"
+               style="stroke-width:0.264583">study_program</tspan></text>
+        </g>
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-4)"
+           d="M 98.780256,66.938068 H 108.3646"
+           id="path1068-00-3-0" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-41)"
+           d="m 98.777491,60.358072 h 9.469449"
+           id="path1068-00-3-2" />
+      </g>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.144727"
+         id="rect1357"
+         width="65.481041"
+         height="18.9895"
+         x="69.690529"
+         y="53.69445" />
+      <text
+         xml:space="preserve"
+         style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+         x="89.802551"
+         y="51.823559"
+         id="text1361"><tspan
+           sodipodi:role="line"
+           x="89.802551"
+           y="51.823559"
+           style="stroke-width:0.264583"
+           id="tspan1565">enrolled_students</tspan></text>
+    </g>
+    <g
+       id="g3051"
+       transform="translate(-13.787011,-17.38595)"
+       inkscape:label="lecturers">
+      <rect
+         style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+         id="rect841-4-8-6-1-8-7"
+         width="54.324074"
+         height="18.767273"
+         x="85.699203"
+         y="56.565117" />
+      <g
+         id="g2945"
+         inkscape:label="content">
+        <g
+           id="g1772"
+           transform="translate(16.557347,-11.973675)"
+           inkscape:label="room_label">
+          <rect
+             style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-4-4"
+             width="17.469551"
+             height="4.3009748"
+             x="100.10503"
+             y="70.503227" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="101.0958"
+             y="73.609985"
+             id="text1739"><tspan
+               sodipodi:role="line"
+               id="tspan1737"
+               x="101.0958"
+               y="73.609985"
+               style="stroke-width:0.264583">room_label</tspan></text>
+        </g>
+        <g
+           id="g1777"
+           transform="translate(20.06526,-14.055037)"
+           inkscape:label="email">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-4-3"
+             width="9.7304878"
+             height="3.9702456"
+             x="100.24535"
+             y="77.816704" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="101.13828"
+             y="80.730698"
+             id="text1758"><tspan
+               sodipodi:role="line"
+               id="tspan1756"
+               x="101.13828"
+               y="80.730698"
+               style="stroke-width:0.264583">email</tspan></text>
+        </g>
+        <g
+           id="g1782"
+           transform="translate(16.206556,-14.522758)"
+           inkscape:label="phone_number">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-4-3-4"
+             width="23.290384"
+             height="4.2679019"
+             x="97.57933"
+             y="83.50589" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="98.367378"
+             y="86.453934"
+             id="text1762"><tspan
+               sodipodi:role="line"
+               id="tspan1760"
+               x="98.367378"
+               y="86.453934"
+               style="stroke-width:0.264583">phone_number</tspan></text>
+        </g>
+        <g
+           id="g2340"
+           transform="translate(-13.445336,0.1951135)"
+           inkscape:label="lecturer_id_PK">
+          <rect
+             style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-4"
+             width="17.070042"
+             height="4.2679019"
+             x="101.76185"
+             y="63.747295"
+             inkscape:label="lecturer_id" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="102.64387"
+             y="66.745544"
+             id="text1735"><tspan
+               sodipodi:role="line"
+               id="tspan1733"
+               x="102.64387"
+               y="66.745544"
+               style="stroke-width:0.264583">lecturer_id</tspan></text>
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.150019;stroke-miterlimit:4;stroke-dasharray:0.450056, 0.150019;stroke-dashoffset:0;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-02"
+             width="18.730452"
+             height="5.9984722"
+             x="100.99371"
+             y="62.832588" />
+        </g>
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-6)"
+           d="m 106.27883,69.026176 6.63484,2.020746"
+           id="path1068-00-3-5"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-6-2)"
+           d="m 106.27181,65.748614 h 13.0709"
+           id="path1068-00-3-5-7" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-6-5)"
+           d="m 106.27883,63.027702 9.62826,-1.849707"
+           id="path1068-00-3-5-6"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+         x="104.81643"
+         y="55.284702"
+         id="text2985"><tspan
+           sodipodi:role="line"
+           x="104.81643"
+           y="55.284702"
+           style="stroke-width:0.264583"
+           id="tspan2987">lecturers</tspan></text>
+    </g>
+    <g
+       id="g1435"
+       transform="translate(53.694448,-67.04859)"
+       inkscape:label="eooms">
+      <g
+         id="g1377"
+         inkscape:label="content">
+        <g
+           id="g1136"
+           transform="translate(29.197515,-7.6895366)"
+           inkscape:label="capacity">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-6-9"
+             width="14.333869"
+             height="4.2679019"
+             x="95.334267"
+             y="91.176521" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="96.537766"
+             y="94.105598"
+             id="text1131"><tspan
+               sodipodi:role="line"
+               id="tspan1129"
+               x="96.537766"
+               y="94.105598"
+               style="stroke-width:0.264583">capacity</tspan></text>
+        </g>
+        <g
+           id="g1352"
+           inkscape:label="room_label_PK">
+          <g
+             id="g1141"
+             inkscape:label="room_label">
+            <rect
+               style="fill:#ffdd4c;fill-opacity:1;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-6"
+               width="17.701464"
+               height="4.2679019"
+               x="98.851425"
+               y="83.458755" />
+            <text
+               xml:space="preserve"
+               style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+               x="99.671486"
+               y="86.575287"
+               id="text1108"><tspan
+                 sodipodi:role="line"
+                 id="tspan1106"
+                 x="99.671486"
+                 y="86.575287"
+                 style="stroke-width:0.264583">room_label</tspan></text>
+          </g>
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.15;stroke-miterlimit:4;stroke-dasharray:0.45, 0.15;stroke-dashoffset:0;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-9"
+             width="19.899755"
+             height="5.8838935"
+             x="97.906738"
+             y="82.663986" />
+        </g>
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-46)"
+           d="m 117.86248,85.697366 5.79374,-4.87e-4"
+           id="path1068-00-3-8"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <rect
+         style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+         id="rect841-4-8-6-1-8-023"
+         width="45.530903"
+         height="10.348284"
+         x="95.942307"
+         y="80.372147" />
+      <text
+         xml:space="preserve"
+         style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+         x="113.79667"
+         y="79.138512"
+         id="text1408"><tspan
+           sodipodi:role="line"
+           x="113.79667"
+           y="79.138512"
+           style="stroke-width:0.264583"
+           id="tspan1410">rooms</tspan></text>
+    </g>
+    <g
+       id="g1912"
+       transform="translate(54.128928,-47.905241)"
+       clip-path="none"
+       mask="none"
+       inkscape:label="courses">
+      <g
+         id="g3179"
+         transform="translate(5.61266,-2.3386084)"
+         inkscape:label="content">
+        <g
+           id="g1588"
+           transform="translate(27.314946,-1.1693038)"
+           inkscape:label="semester">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-8-2"
+             width="15.456401"
+             height="4.2679019"
+             x="88.458763"
+             y="89.165321" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="89.400986"
+             y="92.207314"
+             id="text1521"><tspan
+               sodipodi:role="line"
+               id="tspan1519"
+               x="89.400986"
+               y="92.207314"
+               style="stroke-width:0.264583">semester</tspan></text>
+        </g>
+        <g
+           id="g1598"
+           transform="translate(30.660819,-4.9070165)"
+           inkscape:label="name">
+          <g
+             id="g1618"
+             transform="translate(-1.4499372)">
+            <rect
+               style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-8-0"
+               width="9.6906147"
+               height="3.4919424"
+               x="89.394203"
+               y="98.360268" />
+            <text
+               xml:space="preserve"
+               style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+               x="90.30806"
+               y="100.95939"
+               id="text1525"><tspan
+                 sodipodi:role="line"
+                 id="tspan1523"
+                 x="90.30806"
+                 y="100.95939"
+                 style="stroke-width:0.264583">name</tspan></text>
+          </g>
+        </g>
+        <g
+           id="g1608"
+           transform="translate(2.4468255,1.6583467)"
+           inkscape:label="awarded_credits">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-8-3"
+             width="25.183315"
+             height="4.2679019"
+             x="109.78854"
+             y="97.023041" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="110.75649"
+             y="100.18597"
+             id="text1533"><tspan
+               sodipodi:role="line"
+               id="tspan1531"
+               x="110.75649"
+               y="100.18597"
+               style="stroke-width:0.264583">awarded_credits</tspan></text>
+        </g>
+        <g
+           id="g1613"
+           transform="translate(3.7838447,-3.2577657)"
+           inkscape:label="description">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-8-9"
+             width="16.642729"
+             height="4.2679019"
+             x="111.56422"
+             y="107.96773" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="112.08411"
+             y="111.02578"
+             id="text1541"><tspan
+               sodipodi:role="line"
+               id="tspan1539"
+               x="112.08411"
+               y="111.02578"
+               style="stroke-width:0.264583">description</tspan></text>
+        </g>
+        <g
+           id="g1582"
+           transform="translate(-13.950595,13.817164)"
+           inkscape:label="course_id_PK">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:1;stroke:#000000;stroke-width:0.149728;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-8"
+             width="30.129425"
+             height="4.2679019"
+             x="91.358627"
+             y="81.307594"
+             inkscape:label="course_id" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="92.234711"
+             y="84.28344"
+             id="text1517"><tspan
+               sodipodi:role="line"
+               id="tspan1515"
+               x="92.234711"
+               y="84.28344"
+               style="stroke-width:0.264583">course_abbreviation</tspan></text>
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.15;stroke-miterlimit:4;stroke-dasharray:0.450001, 0.15;stroke-dashoffset:0;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-92-9"
+             width="32.120853"
+             height="6.1199861"
+             x="90.351677"
+             y="80.449135" />
+        </g>
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-5)"
+           d="m 108.56299,98.255335 2.99017,2.565425"
+           id="path1068-00-3-54"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-2)"
+           d="m 108.52194,94.266299 6.29717,-4.069116"
+           id="path1068-00-3-9"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-460)"
+           d="m 108.56037,96.556592 9.15346,-1.273057"
+           id="path1068-00-3-1"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-57)"
+           d="m 108.52194,100.38629 5.90334,6.58531"
+           id="path1068-00-3-21"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <rect
+         style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+         id="rect841-4-8-6-1-8-61"
+         width="64.140724"
+         height="26.514265"
+         x="80.232361"
+         y="82.915047" />
+      <text
+         xml:space="preserve"
+         style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+         x="106.85973"
+         y="81.210922"
+         id="text3306"><tspan
+           sodipodi:role="line"
+           id="tspan3304"
+           x="106.85973"
+           y="81.210922"
+           style="stroke-width:0.264583">courses</tspan></text>
+    </g>
+    <g
+       id="g5919"
+       transform="translate(-57.398624,-11.746652)"
+       inkscape:label="exams">
+      <g
+         id="g5714"
+         transform="translate(5.7062044,1.2160764)"
+         inkscape:label="content">
+        <g
+           id="g3878"
+           transform="translate(22.820313,-11.575521)"
+           inkscape:label="course_id">
+          <rect
+             style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-53-7"
+             width="15.617468"
+             height="3.9040997"
+             x="73.538437"
+             y="89.154945" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="74.433716"
+             y="92.017876"
+             id="text3578"><tspan
+               sodipodi:role="line"
+               id="tspan3576"
+               x="74.433716"
+               y="92.017876"
+               style="stroke-width:0.264583">course_id</tspan></text>
+        </g>
+        <g
+           id="g3883"
+           transform="translate(17.793229,-13.49375)"
+           inkscape:label="academic_year">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-53-1"
+             width="22.794291"
+             height="4.0403147"
+             x="74.660973"
+             y="96.174866" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="75.264442"
+             y="99.036049"
+             id="text3582"><tspan
+               sodipodi:role="line"
+               id="tspan3580"
+               x="75.264442"
+               y="99.036049"
+               style="stroke-width:0.264583">academic_year</tspan></text>
+        </g>
+        <g
+           id="g3888"
+           transform="translate(24.209375,-15.610417)"
+           inkscape:label="type">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-53-6"
+             width="7.8122592"
+             height="3.6395164"
+             x="75.596413"
+             y="103.54472" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="76.413322"
+             y="106.08689"
+             id="text3586"><tspan
+               sodipodi:role="line"
+               id="tspan3584"
+               x="76.413322"
+               y="106.08689"
+               style="stroke-width:0.264583">type</tspan></text>
+        </g>
+        <g
+           id="g3893"
+           transform="translate(19.84375,-17.925521)"
+           inkscape:label="time_limit">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-53-3"
+             width="15.970895"
+             height="3.8937247"
+             x="75.783501"
+             y="110.72729" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="76.472496"
+             y="113.56282"
+             id="text3590"><tspan
+               sodipodi:role="line"
+               id="tspan3588"
+               x="76.472496"
+               y="113.56282"
+               style="stroke-width:0.264583">time_limit</tspan></text>
+        </g>
+        <g
+           id="g3898"
+           transform="translate(17.660938,-19.513021)"
+           inkscape:label="max_points">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-53-18"
+             width="17.769161"
+             height="3.8556712"
+             x="76.906036"
+             y="117.40697" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="77.548248"
+             y="120.11093"
+             id="text3594"><tspan
+               sodipodi:role="line"
+               id="tspan3592"
+               x="77.548248"
+               y="120.11093"
+               style="stroke-width:0.264583">max_points</tspan></text>
+        </g>
+        <g
+           id="g3903"
+           transform="translate(17.330208,-22.059636)"
+           inkscape:label="min_points">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-53-65"
+             width="16.953108"
+             height="3.8540862"
+             x="77.654388"
+             y="125.26631" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="78.36676"
+             y="127.96865"
+             id="text3598"><tspan
+               sodipodi:role="line"
+               id="tspan3596"
+               x="78.36676"
+               y="127.96865"
+               style="stroke-width:0.264583">min_points</tspan></text>
+        </g>
+        <g
+           id="g3925"
+           transform="translate(-9.4820242,6.2418521)"
+           inkscape:label="exam_id_PK">
+          <g
+             id="g3873"
+             inkscape:label="exam_id">
+            <rect
+               style="fill:#ffdd4c;fill-opacity:1;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-53"
+               width="14.145723"
+               height="3.7883446"
+               x="74.286797"
+               y="83.377411" />
+            <text
+               xml:space="preserve"
+               style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+               x="75.27935"
+               y="86.205811"
+               id="text3574"><tspan
+                 sodipodi:role="line"
+                 id="tspan3572"
+                 x="75.27935"
+                 y="86.205811"
+                 style="stroke-width:0.264583">exam_id</tspan></text>
+          </g>
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.15;stroke-miterlimit:4;stroke-dasharray:0.450001, 0.15;stroke-dashoffset:0;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-92-6"
+             width="16.345072"
+             height="5.5908189"
+             x="73.286057"
+             y="82.433495" />
+        </g>
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-1)"
+           d="M 80.149102,88.675347 95.439983,79.574661"
+           id="path1068-00-3-3"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-3)"
+           d="M 80.136407,89.87272 91.632338,84.704396"
+           id="path1068-00-3-15"
+           sodipodi:nodetypes="cc"
+           sodipodi:insensitive="true" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-83)"
+           d="M 80.190279,90.597 98.889118,89.778487"
+           id="path1068-00-3-87"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-0)"
+           d="m 80.136406,91.790378 14.676439,3.086963"
+           id="path1068-00-3-23"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-7)"
+           d="m 80.149102,94.266167 13.96216,11.017983"
+           id="path1068-00-3-81"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-61)"
+           d="m 80.183179,92.936301 13.53052,6.875509"
+           id="path1068-00-3-03"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <rect
+         style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+         id="rect841-4-8-6-1-8-1"
+         width="55.914326"
+         height="32.518291"
+         x="67.317741"
+         y="77.098099" />
+      <text
+         xml:space="preserve"
+         style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+         x="89.802559"
+         y="75.770905"
+         id="text5841"><tspan
+           sodipodi:role="line"
+           id="tspan5839"
+           x="89.802559"
+           y="75.770905"
+           style="stroke-width:0.264583">exams</tspan></text>
+    </g>
+    <g
+       id="g5624"
+       transform="translate(27.245528,-10.234886)"
+       inkscape:label="exam_dates">
+      <g
+         id="g5440"
+         inkscape:label="content">
+        <g
+           id="g3265"
+           transform="translate(25.969415,-19.294208)"
+           inkscape:label="format">
+          <g
+             id="g3244">
+            <rect
+               style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-98-9"
+               width="11.847156"
+               height="3.8777525"
+               x="71.797775"
+               y="100.58381" />
+          </g>
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="72.782143"
+             y="103.47948"
+             id="text3209"><tspan
+               sodipodi:role="line"
+               id="tspan3207"
+               x="72.782143"
+               y="103.47948"
+               style="stroke-width:0.264583">format</tspan></text>
+        </g>
+        <g
+           id="g3271"
+           transform="translate(23.666717,-22.45064)"
+           inkscape:label="no_questions">
+          <g
+             id="g3247">
+            <rect
+               style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-98-0"
+               width="20.41304"
+               height="3.9427774"
+               x="70.011841"
+               y="108.78701" />
+          </g>
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="70.676826"
+             y="111.48881"
+             id="text3213"><tspan
+               sodipodi:role="line"
+               id="tspan3211"
+               x="70.676826"
+               y="111.48881"
+               style="stroke-width:0.264583">no_questions</tspan></text>
+        </g>
+        <g
+           id="g3277"
+           transform="translate(22.752997,-25.448356)"
+           inkscape:label="time_of_exam">
+          <g
+             id="g3250">
+            <rect
+               style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-98-5"
+               width="21.677099"
+               height="3.8235664"
+               x="70.276421"
+               y="116.97601" />
+          </g>
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="71.017242"
+             y="119.60537"
+             id="text3217"><tspan
+               sodipodi:role="line"
+               id="tspan3215"
+               x="71.017242"
+               y="119.60537"
+               style="stroke-width:0.264583">time_of_exam</tspan></text>
+        </g>
+        <g
+           id="g3283"
+           transform="translate(21.328108,-25.911781)"
+           inkscape:label="registration_start">
+          <g
+             id="g3253">
+            <rect
+               style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-98-8"
+               width="26.447859"
+               height="3.9872689"
+               x="69.151947"
+               y="122.30241" />
+          </g>
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="69.846558"
+             y="125.13795"
+             id="text3221"><tspan
+               sodipodi:role="line"
+               x="69.846558"
+               y="125.13795"
+               style="stroke-width:0.264583"
+               id="tspan3223">registration_start</tspan></text>
+        </g>
+        <g
+           id="g3289"
+           transform="translate(23.042629,-33.327426)"
+           inkscape:label="registration_end">
+          <g
+             id="g3256">
+            <rect
+               style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-98-86"
+               width="24.739988"
+               height="3.8310962"
+               x="68.490486"
+               y="134.82785" />
+          </g>
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="69.213066"
+             y="137.60007"
+             id="text3229"><tspan
+               sodipodi:role="line"
+               id="tspan3227"
+               x="69.213066"
+               y="137.60007"
+               style="stroke-width:0.264583">registration_end</tspan></text>
+        </g>
+        <g
+           id="g3295"
+           transform="translate(22.403868,-34.658176)"
+           inkscape:label="student_capacity">
+          <g
+             id="g3259">
+            <rect
+               style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-98-4"
+               width="25.255169"
+               height="3.8469524"
+               x="68.88736"
+               y="141.36043" />
+          </g>
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="69.383537"
+             y="144.09177"
+             id="text3233"><tspan
+               sodipodi:role="line"
+               id="tspan3231"
+               x="69.383537"
+               y="144.09177"
+               style="stroke-width:0.264583">student_capacity</tspan></text>
+        </g>
+        <g
+           id="g3328"
+           transform="translate(-5.3578125,-0.1984375)"
+           inkscape:label="exam_id_exam_date_number_PK">
+          <g
+             id="g3238"
+             transform="translate(-8.0311135,2.890876)"
+             inkscape:label="exam_id">
+            <rect
+               style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-64"
+               width="14.195333"
+               height="3.9040997"
+               x="69.18502"
+               y="88.088966" />
+            <text
+               xml:space="preserve"
+               style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+               x="70.180725"
+               y="90.884377"
+               id="text3197"><tspan
+                 sodipodi:role="line"
+                 x="70.180725"
+                 y="90.884377"
+                 style="stroke-width:0.264583"
+                 id="tspan3199">exam_id</tspan></text>
+          </g>
+          <g
+             id="g3301"
+             transform="translate(-14.826777,1.9176588)"
+             inkscape:label="exam_date_number">
+            <g
+               id="g3241">
+              <rect
+                 style="fill:#ffdd4c;fill-opacity:1;stroke:#000000;stroke-width:0.149728;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+                 id="rect841-4-8-6-1-8-98"
+                 width="29.805748"
+                 height="4.0363913"
+                 x="68.82122"
+                 y="94.405891" />
+            </g>
+            <text
+               xml:space="preserve"
+               style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+               x="69.453125"
+               y="97.168228"
+               id="text3205"><tspan
+                 sodipodi:role="line"
+                 id="tspan3203"
+                 x="69.453125"
+                 y="97.168228"
+                 style="stroke-width:0.264583">exam_date_number</tspan></text>
+          </g>
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.15;stroke-miterlimit:4;stroke-dasharray:0.450001, 0.15;stroke-dashoffset:0;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-92-1"
+             width="32.668556"
+             height="11.891765"
+             x="52.584511"
+             y="89.726585"
+             inkscape:label="rect841-4-8-6-1-8-92" />
+        </g>
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-49)"
+           d="M 79.895255,89.528148 96.922293,83.400852"
+           id="path1068-00-3-4"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-76)"
+           d="m 79.955848,92.555235 12.833304,-4.20026"
+           id="path1068-00-3-38"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-62)"
+           d="M 79.869924,94.273886 92.174062,93.380918"
+           id="path1068-00-3-14"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-81)"
+           d="m 79.93607,96.793742 9.608696,1.488282"
+           id="path1068-00-3-52"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-54)"
+           d="M 79.969143,98.389505 90.64444,103.2843"
+           id="path1068-00-3-07"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-10)"
+           d="m 79.895255,101.41991 10.660182,7.06574"
+           id="path1068-00-3-6"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <rect
+         style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+         id="rect841-4-8-6-1-8-05"
+         width="74.34256"
+         height="32.518291"
+         x="45.80254"
+         y="79.530258" />
+      <text
+         xml:space="preserve"
+         style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+         x="71.280785"
+         y="78.203064"
+         id="text5531"><tspan
+           sodipodi:role="line"
+           x="71.280785"
+           y="78.203064"
+           style="stroke-width:0.264583"
+           id="tspan5533">exam_dates</tspan></text>
+    </g>
+    <g
+       id="g1523"
+       inkscape:label="question_assessments"
+       transform="translate(-24.722297,-24.882792)">
+      <rect
+         style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+         id="rect841-4-8-6-1-8-45"
+         width="80.308083"
+         height="26.294464"
+         x="33.88158"
+         y="174.85283" />
+      <g
+         id="g3043"
+         inkscape:label="content"
+         transform="translate(-0.18708866,-0.280633)">
+        <g
+           id="g1428"
+           transform="translate(20.29912,15.001139)"
+           inkscape:label="lecturer_id">
+          <rect
+             style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-70"
+             width="16.345072"
+             height="4.2679019"
+             x="67.762878"
+             y="162.96605" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="68.361717"
+             y="165.95988"
+             id="text380"><tspan
+               sodipodi:role="line"
+               id="tspan378"
+               x="68.361717"
+               y="165.95988"
+               style="stroke-width:0.264583">lecturer_id</tspan></text>
+        </g>
+        <g
+           id="g1433"
+           transform="translate(14.188252,11.917736)"
+           inkscape:label="time_of_assessment">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149726;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-38"
+             width="30.589527"
+             height="4.2679019"
+             x="67.630585"
+             y="171.96188" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="68.460938"
+             y="174.95572"
+             id="text384"><tspan
+               sodipodi:role="line"
+               x="68.460938"
+               y="174.95572"
+               style="stroke-width:0.264583"
+               id="tspan3540">time_of_assessment</tspan><tspan
+               sodipodi:role="line"
+               x="68.460938"
+               y="178.48351"
+               style="stroke-width:0.264583"
+               id="tspan3538" /></text>
+        </g>
+        <g
+           id="g1438"
+           transform="translate(17.629783,9.1772191)"
+           inkscape:label="awarded_points">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-09"
+             width="23.554968"
+             height="4.2679019"
+             x="66.704544"
+             y="180.29625" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="67.270309"
+             y="183.25702"
+             id="text388"><tspan
+               sodipodi:role="line"
+               id="tspan386"
+               x="67.270309"
+               y="183.25702"
+               style="stroke-width:0.264583">awarded_points</tspan></text>
+        </g>
+        <g
+           id="g1443"
+           transform="translate(-18.789115,27.270828)"
+           inkscape:label="comment">
+          <g
+             id="g1448"
+             transform="translate(40.785329,-23.198994)">
+            <rect
+               style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-614"
+               width="14.989082"
+               height="3.8127277"
+               x="66.57225"
+               y="190.93788" />
+            <text
+               xml:space="preserve"
+               style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+               x="67.138023"
+               y="193.70807"
+               id="text392"><tspan
+                 sodipodi:role="line"
+                 id="tspan390"
+                 x="67.138023"
+                 y="193.70807"
+                 style="stroke-width:0.264583">comment</tspan></text>
+          </g>
+        </g>
+        <g
+           id="g2806"
+           inkscape:label="exam_elaboration_id_question_number_PK">
+          <g
+             id="g1418"
+             transform="translate(-32.256745,37.18995)"
+             inkscape:label="exam_elaboration_id">
+            <rect
+               style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-86"
+               width="31.889343"
+               height="4.2679019"
+               x="70.342567"
+               y="146.36343" />
+            <text
+               xml:space="preserve"
+               style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+               x="71.172913"
+               y="149.35728"
+               id="text372"><tspan
+                 sodipodi:role="line"
+                 id="tspan370"
+                 x="71.172913"
+                 y="149.35728"
+                 style="stroke-width:0.264583">exam_elaboration_id</tspan></text>
+          </g>
+          <g
+             id="g1423"
+             transform="translate(-28.140794,35.225519)"
+             inkscape:label="question_number">
+            <rect
+               style="fill:#ffdd4c;fill-opacity:1;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-60"
+               width="26.399239"
+               height="4.2679019"
+               x="68.556625"
+               y="154.63167" />
+            <text
+               xml:space="preserve"
+               style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+               x="69.254684"
+               y="157.65858"
+               id="text376"><tspan
+                 sodipodi:role="line"
+                 id="tspan374"
+                 x="69.254684"
+                 y="157.65858"
+                 style="stroke-width:0.264583">question_number</tspan></text>
+          </g>
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.15;stroke-miterlimit:4;stroke-dasharray:0.450002, 0.15;stroke-dashoffset:0;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-92-7"
+             width="34.773308"
+             height="13.248158"
+             x="36.464161"
+             y="182.29478"
+             inkscape:label="rect841-4-8-6-1-8-92" />
+        </g>
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-58)"
+           d="m 71.299031,186.26327 9.625232,-0.0629"
+           id="path1068-00-3-34"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-82)"
+           d="m 71.237473,195.54294 16.426564,1.63003"
+           id="path1068-00-3-7"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-23)"
+           d="m 71.267051,191.83143 12.125073,-0.0875"
+           id="path1068-00-3-64"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-60)"
+           d="m 71.237473,182.29478 15.886974,-2.43724"
+           id="path1068-00-3-09"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+         x="57.997482"
+         y="172.77638"
+         id="text2795"><tspan
+           sodipodi:role="line"
+           id="tspan2793"
+           x="57.997482"
+           y="172.77638"
+           style="stroke-width:0.264583">question_assessments</tspan></text>
+    </g>
+    <g
+       id="g3735"
+       transform="translate(-49.682583,-77.855476)"
+       inkscape:label="exam_elaborations">
+      <rect
+         style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149728;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+         id="rect841-4-8-6-1-8-3"
+         width="80.2202"
+         height="30.740948"
+         x="58.337482"
+         y="187.76102" />
+      <g
+         id="g3572"
+         transform="translate(0.37417733)">
+        <g
+           id="g1419"
+           transform="translate(50.117456,1.9818576)">
+          <g
+             id="g1464">
+            <rect
+               style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-95-1"
+               width="16.345072"
+               height="4.2679019"
+               x="61.14381"
+               y="187.76103" />
+            <text
+               xml:space="preserve"
+               style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+               x="61.770199"
+               y="190.86989"
+               id="text2123"><tspan
+                 sodipodi:role="line"
+                 id="tspan2121"
+                 x="61.770199"
+                 y="190.86989"
+                 style="stroke-width:0.264583">student_id</tspan></text>
+          </g>
+        </g>
+        <g
+           id="g1424"
+           transform="translate(43.937924,1.6195993)">
+          <rect
+             style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-95-1-7"
+             width="22.959654"
+             height="4.2679019"
+             x="64.247131"
+             y="193.43228" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="64.779831"
+             y="196.4906"
+             id="text2127"><tspan
+               sodipodi:role="line"
+               id="tspan2125"
+               x="64.779831"
+               y="196.4906"
+               style="stroke-width:0.264583">academic_year</tspan></text>
+        </g>
+        <g
+           id="g1429"
+           transform="translate(47.415686,-1.6195993)">
+          <rect
+             style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-95-1-0"
+             width="13.963821"
+             height="3.871027"
+             x="65.10704"
+             y="202.16353" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="65.805099"
+             y="204.89279"
+             id="text2131"><tspan
+               sodipodi:role="line"
+               id="tspan2129"
+               x="65.805099"
+               y="204.89279"
+               style="stroke-width:0.264583">exam_id</tspan></text>
+        </g>
+        <g
+           id="g1434"
+           transform="translate(41.677047,-3.7002722)">
+          <rect
+             style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-95-1-9"
+             width="30.004187"
+             height="3.9702456"
+             x="62.924221"
+             y="209.47264" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="63.42384"
+             y="212.3342"
+             id="text2135"><tspan
+               sodipodi:role="line"
+               id="tspan2133"
+               x="63.42384"
+               y="212.3342"
+               style="stroke-width:0.264583">exam_date_number</tspan></text>
+        </g>
+        <g
+           id="g1439"
+           transform="translate(40.8653,-4.9069469)">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-95-1-1"
+             width="30.103405"
+             height="3.9752898"
+             x="63.982555"
+             y="216.67751" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="64.581406"
+             y="219.37874"
+             id="text2139"><tspan
+               sodipodi:role="line"
+               id="tspan2137"
+               x="64.581406"
+               y="219.37874"
+               style="stroke-width:0.264583">state_of_completion</tspan></text>
+        </g>
+        <g
+           id="g1475"
+           transform="translate(1.1244791,-0.26458333)">
+          <g
+             id="g1444"
+             transform="translate(-2.80633,19.550765)">
+            <rect
+               style="fill:#ffdd4c;fill-opacity:1;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-95"
+               width="32.29438"
+               height="4.2679019"
+               x="63.29533"
+               y="181.02583" />
+            <text
+               xml:space="preserve"
+               style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+               x="64.434601"
+               y="184.12437"
+               id="text2119"><tspan
+                 sodipodi:role="line"
+                 id="tspan2117"
+                 x="64.434601"
+                 y="184.12437"
+                 style="stroke-width:0.264583">exam_elaboration_id</tspan></text>
+          </g>
+          <g
+             id="g1467">
+            <rect
+               style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.15;stroke-miterlimit:4;stroke-dasharray:0.45, 0.15;stroke-dashoffset:0;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-92-8"
+               width="34.802315"
+               height="6.6942134"
+               x="59.289951"
+               y="199.20653"
+               inkscape:label="rect841-4-8-6-1-8-92" />
+          </g>
+        </g>
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-40)"
+           d="m 95.216749,198.94194 15.149321,-7.17051"
+           id="path1068-00-3-86"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-40-0)"
+           d="m 95.243814,200.32518 12.015856,-2.91401"
+           id="path1068-00-3-86-2"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-40-4)"
+           d="m 95.2672,202.279 16.33401,0.23406"
+           id="path1068-00-3-86-5"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-40-5)"
+           d="m 95.220429,203.69278 8.528491,3.85113"
+           id="path1068-00-3-86-7"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-40-3)"
+           d="m 95.216749,205.63616 8.931151,7.90828"
+           id="path1068-00-3-86-4"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+         x="84.283447"
+         y="185.87259"
+         id="text3666"><tspan
+           sodipodi:role="line"
+           id="tspan3664"
+           x="84.283447"
+           y="185.87259"
+           style="stroke-width:0.264583">exam_elaborations</tspan></text>
+    </g>
+    <g
+       id="g507"
+       inkscape:label="course_guarantors"
+       transform="translate(-12.47248,3.583672)">
+      <g
+         id="g5301"
+         transform="translate(46.585077,-8.7931672)">
+        <g
+           id="g4828"
+           transform="translate(43.289763,-19.377405)">
+          <rect
+             style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-94"
+             width="16.766022"
+             height="3.8048811"
+             x="64.698502"
+             y="190.14407" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="65.434258"
+             y="192.98196"
+             id="text4818"><tspan
+               sodipodi:role="line"
+               id="tspan4816"
+               x="65.434258"
+               y="192.98196"
+               style="stroke-width:0.264583">lecturer_id</tspan></text>
+        </g>
+        <g
+           id="g4859">
+          <g
+             id="g4833">
+            <rect
+               style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-25"
+               width="30.750898"
+               height="4.0855141"
+               x="64.979134"
+               y="167.88051" />
+            <text
+               xml:space="preserve"
+               style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+               x="65.929611"
+               y="170.82329"
+               id="text4810"><tspan
+                 sodipodi:role="line"
+                 id="tspan4808"
+                 x="65.929611"
+                 y="170.82329"
+                 style="stroke-width:0.264583">course_abbreviation</tspan></text>
+          </g>
+          <g
+             id="g4823"
+             transform="translate(3.1088541,-7.077604)">
+            <rect
+               style="fill:#ffdd4c;fill-opacity:1;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+               id="rect841-4-8-6-1-8-63"
+               width="23.547985"
+               height="3.8048811"
+               x="64.979134"
+               y="180.97673" />
+            <text
+               xml:space="preserve"
+               style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+               x="66.042297"
+               y="183.72105"
+               id="text4814"><tspan
+                 sodipodi:role="line"
+                 id="tspan4812"
+                 x="66.042297"
+                 y="183.72105"
+                 style="stroke-width:0.264583">academic_year</tspan></text>
+          </g>
+          <rect
+             style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.15;stroke-miterlimit:4;stroke-dasharray:0.450001, 0.15;stroke-dashoffset:0;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-92-87"
+             width="33.146111"
+             height="12.006965"
+             x="63.794128"
+             y="166.73636"
+             inkscape:label="rect841-4-8-6-1-8-92" />
+        </g>
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7-52)"
+           d="m 97.021158,172.54252 9.999212,3e-5"
+           id="path1068-00-3-65"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <rect
+         style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+         id="rect841-4-8-6-1-8-29"
+         width="66.020592"
+         height="16.442425"
+         x="107.86567"
+         y="155.92204" />
+      <text
+         xml:space="preserve"
+         style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+         x="127.64938"
+         y="154.52089"
+         id="text5332"><tspan
+           sodipodi:role="line"
+           id="tspan5330"
+           x="127.64938"
+           y="154.52089"
+           style="stroke-width:0.264583">course_guarantors</tspan></text>
+    </g>
+    <g
+       id="g1745"
+       transform="translate(90.732422,-92.72347)"
+       inkscape:label="lecturers_teaching_courses">
+      <rect
+         style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+         id="rect841-4-8-6-1-8-87"
+         width="40.356007"
+         height="20.804359"
+         x="66.402908"
+         y="194.7164" />
+      <g
+         id="g1722">
+        <g
+           id="g1667"
+           transform="translate(7.0158249,0.98221549)">
+          <rect
+             style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-28"
+             width="17.023268"
+             height="3.7814951"
+             x="70.591789"
+             y="197.1599" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="71.514641"
+             y="199.92761"
+             id="text567"><tspan
+               sodipodi:role="line"
+               id="tspan565"
+               x="71.514641"
+               y="199.92761"
+               style="stroke-width:0.264583">lecturer_id</tspan></text>
+        </g>
+        <g
+           id="g1672">
+          <rect
+             style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149728;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-28-3"
+             width="30.119474"
+             height="3.8048811"
+             x="71.574005"
+             y="203.24028" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="72.309769"
+             y="205.93785"
+             id="text571"><tspan
+               sodipodi:role="line"
+               id="tspan569"
+               x="72.309769"
+               y="205.93785"
+               style="stroke-width:0.264583">course_abbreviation</tspan></text>
+        </g>
+        <g
+           id="g1677"
+           transform="translate(3.1805073,-2.3466331)">
+          <rect
+             style="fill:#ffdd4c;fill-opacity:1;stroke:#000000;stroke-width:0.149728;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-28-0"
+             width="22.939947"
+             height="3.8048811"
+             x="71.948181"
+             y="210.58351" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="72.660561"
+             y="213.25768"
+             id="text575"><tspan
+               sodipodi:role="line"
+               id="tspan573"
+               x="72.660561"
+               y="213.25768"
+               style="stroke-width:0.264583">academic_year</tspan></text>
+        </g>
+        <rect
+           style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.15;stroke-miterlimit:4;stroke-dasharray:0.45, 0.15;stroke-dashoffset:0;stroke-opacity:0.990769"
+           id="rect841-4-8-6-1-8-92-66"
+           width="33.908707"
+           height="16.118687"
+           x="69.656349"
+           y="197.05597"
+           inkscape:label="rect841-4-8-6-1-8-92" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+         x="66.675003"
+         y="193.01353"
+         id="text1726"><tspan
+           sodipodi:role="line"
+           id="tspan1724"
+           x="66.675003"
+           y="193.01353"
+           style="stroke-width:0.264583">lecturers_teaching_courses</tspan></text>
+    </g>
+    <g
+       id="g2017"
+       inkscape:label="exams_in_rooms"
+       transform="translate(104.89254,-133.19612)">
+      <g
+         id="g1877">
+        <g
+           id="g1837">
+          <rect
+             style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-80"
+             width="14.261477"
+             height="3.6725895"
+             x="64.230774"
+             y="208.51752" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="65.105309"
+             y="211.12437"
+             id="text1782"><tspan
+               sodipodi:role="line"
+               id="tspan1780"
+               x="65.105309"
+               y="211.12437"
+               style="stroke-width:0.264583">exam_id</tspan></text>
+        </g>
+        <g
+           id="g1842"
+           transform="translate(-6.283854,-8.9958331)">
+          <rect
+             style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-35"
+             width="29.93804"
+             height="3.8048811"
+             x="63.66951"
+             y="222.60396" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="64.194916"
+             y="225.38234"
+             id="text1786"><tspan
+               sodipodi:role="line"
+               id="tspan1784"
+               x="64.194916"
+               y="225.38234"
+               style="stroke-width:0.264583">exam_date_number</tspan></text>
+        </g>
+        <g
+           id="g1847"
+           transform="translate(-1.0583333,-10.980208)">
+          <rect
+             style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-47"
+             width="17.238041"
+             height="3.8048811"
+             x="63.950146"
+             y="229.99396" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="64.534081"
+             y="232.73692"
+             id="text1790"><tspan
+               sodipodi:role="line"
+               id="tspan1788"
+               x="64.534081"
+               y="232.73692"
+               style="stroke-width:0.264583">room_label</tspan></text>
+        </g>
+        <rect
+           style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.15;stroke-miterlimit:4;stroke-dasharray:0.45, 0.15;stroke-dashoffset:0;stroke-opacity:0.990769"
+           id="rect841-4-8-6-1-8-92-85"
+           width="34.21204"
+           height="17.785059"
+           x="55.063431"
+           y="206.70375"
+           inkscape:label="rect841-4-8-6-1-8-92" />
+      </g>
+      <rect
+         style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+         id="rect841-4-8-6-1-8-68"
+         width="39.433292"
+         height="22.411644"
+         x="52.479866"
+         y="204.26707" />
+      <text
+         xml:space="preserve"
+         style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+         x="60.12233"
+         y="202.54324"
+         id="text1896"><tspan
+           sodipodi:role="line"
+           id="tspan1894"
+           x="60.12233"
+           y="202.54324"
+           style="stroke-width:0.264583">exams_in_rooms</tspan></text>
+    </g>
+    <g
+       id="g2084"
+       inkscape:label="registered_exam_dates"
+       transform="translate(-9.7707796,-86.876957)">
+      <g
+         id="g1994"
+         transform="translate(-1.122532)">
+        <g
+           id="g1930">
+          <rect
+             style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-80-2"
+             width="14.261478"
+             height="3.6725895"
+             x="120.00155"
+             y="202.75276" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="120.87608"
+             y="205.35962"
+             id="text1782-3"><tspan
+               sodipodi:role="line"
+               id="tspan1780-4"
+               x="120.87608"
+               y="205.35962"
+               style="stroke-width:0.264583">exam_id</tspan></text>
+        </g>
+        <g
+           id="g1935"
+           transform="translate(0.59531248,-5.6885415)">
+          <rect
+             style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-35-6"
+             width="29.93804"
+             height="3.8048811"
+             x="111.83253"
+             y="213.53453" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="112.35794"
+             y="216.31291"
+             id="text1786-0"><tspan
+               sodipodi:role="line"
+               id="tspan1784-2"
+               x="112.35794"
+               y="216.31291"
+               style="stroke-width:0.264583">exam_date_number</tspan></text>
+        </g>
+        <g
+           id="g1940"
+           transform="translate(10.517187,-14.2875)">
+          <rect
+             style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149728;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-80-2-3"
+             width="17.006531"
+             height="3.6725895"
+             x="108.0953"
+             y="227.42516" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="108.97526"
+             y="230.12135"
+             id="text1921"><tspan
+               sodipodi:role="line"
+               id="tspan1919"
+               x="108.97526"
+               y="230.12135"
+               style="stroke-width:0.264583">student_id</tspan></text>
+        </g>
+        <g
+           id="g1945"
+           transform="translate(9.3265623,-17.528645)">
+          <rect
+             style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+             id="rect841-4-8-6-1-8-80-2-1"
+             width="22.794291"
+             height="3.6725895"
+             x="106.70624"
+             y="235.75954" />
+          <text
+             xml:space="preserve"
+             style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+             x="107.42084"
+             y="238.45572"
+             id="text1925"><tspan
+               sodipodi:role="line"
+               id="tspan1923"
+               x="107.42084"
+               y="238.45572"
+               style="stroke-width:0.264583">academic_year</tspan></text>
+        </g>
+        <rect
+           style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.15;stroke-miterlimit:4;stroke-dasharray:0.45, 0.15;stroke-dashoffset:0;stroke-opacity:0.990769"
+           id="rect841-4-8-6-1-8-92-2"
+           width="34.072155"
+           height="23.780922"
+           x="110.25961"
+           y="200.37297"
+           inkscape:label="rect841-4-8-6-1-8-92" />
+      </g>
+      <rect
+         style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+         id="rect841-4-8-6-1-8-00"
+         width="39.705704"
+         height="29.349131"
+         x="106.29832"
+         y="197.62289" />
+      <text
+         xml:space="preserve"
+         style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+         x="109.55275"
+         y="195.79166"
+         id="text1998"><tspan
+           sodipodi:role="line"
+           id="tspan1996"
+           x="109.55275"
+           y="195.79166"
+           style="stroke-width:0.264583">registered_exam_dates</tspan></text>
+    </g>
+    <g
+       id="g1773"
+       inkscape:label="students_admitted_to_exams">
+      <rect
+         style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+         id="rect841-4-8-6-1-8"
+         width="63.304325"
+         height="22.13957"
+         x="140.63261"
+         y="130.77165" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-8-7)"
+         d="m 170.6281,141.70387 8.5142,-0.0351"
+         id="path1068-00-3"
+         sodipodi:nodetypes="cc" />
+      <rect
+         style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.15;stroke-miterlimit:4;stroke-dasharray:0.45, 0.15;stroke-dashoffset:0;stroke-opacity:0.990769"
+         id="rect841-4-8-6-1-8-92"
+         width="27.060694"
+         height="18.158527"
+         x="143.50731"
+         y="132.61212"
+         inkscape:label="rect841-4-8-6-1-8-92" />
+      <g
+         id="g1617"
+         transform="translate(57.055077,-65.358493)">
+        <rect
+           style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+           id="rect841-4-8-6-1-8-953"
+           width="16.741947"
+           height="3.8048811"
+           x="91.310791"
+           y="199.84235" />
+        <text
+           xml:space="preserve"
+           style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+           x="92.141151"
+           y="202.67082"
+           id="text513"><tspan
+             sodipodi:role="line"
+             id="tspan511"
+             x="92.141151"
+             y="202.67082"
+             style="stroke-width:0.264583">student_id</tspan></text>
+      </g>
+      <g
+         id="g1622"
+         transform="translate(57.943748,-70.643748)">
+        <rect
+           style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+           id="rect841-4-8-6-1-8-76"
+           width="22.827364"
+           height="3.8048811"
+           x="87.474335"
+           y="210.42567" />
+        <text
+           xml:space="preserve"
+           style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+           x="88.20546"
+           y="213.12187"
+           id="text517"><tspan
+             sodipodi:role="line"
+             id="tspan515"
+             x="88.20546"
+             y="213.12187"
+             style="stroke-width:0.264583">academic_year</tspan></text>
+      </g>
+      <g
+         id="g1627"
+         transform="translate(61.87261,-74.291977)">
+        <rect
+           style="fill:#ff594b;fill-opacity:0.615686;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+           id="rect841-4-8-6-1-8-649"
+           width="14.029967"
+           height="3.8048811"
+           x="87.474335"
+           y="219.28922" />
+        <text
+           xml:space="preserve"
+           style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+           x="88.304688"
+           y="222.11771"
+           id="text521"><tspan
+             sodipodi:role="line"
+             id="tspan519"
+             x="88.304688"
+             y="222.11771"
+             style="stroke-width:0.264583">exam_id</tspan></text>
+      </g>
+      <g
+         id="g1632"
+         transform="translate(92.894338,-87.192193)">
+        <rect
+           style="fill:#ffdd4c;fill-opacity:0;stroke:#000000;stroke-width:0.149727;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.990769"
+           id="rect841-4-8-6-1-8-39"
+           width="20.841669"
+           height="3.8048811"
+           x="87.244148"
+           y="227.09442" />
+        <text
+           xml:space="preserve"
+           style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+           x="88.073174"
+           y="229.79063"
+           id="text525"><tspan
+             sodipodi:role="line"
+             id="tspan523"
+             x="88.073174"
+             y="229.79063"
+             style="stroke-width:0.264583">points_so_far</tspan></text>
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-size:2.82223px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+         x="151.00395"
+         y="129.2556"
+         id="text1636"><tspan
+           sodipodi:role="line"
+           id="tspan1634"
+           x="151.00395"
+           y="129.2556"
+           style="stroke-width:0.264583">students_admitted_to_exams</tspan></text>
+    </g>
+  </g>
+</svg>
