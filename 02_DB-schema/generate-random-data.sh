@@ -58,4 +58,13 @@ function parse() {
   done
 }
 
-synth generate --to jsonl: ./synth --random | parse
+# Phase 1
+#synth generate --to json:./generated/phase-1.json ./synth/phase-1 --random
+
+# Phase 2
+#synth generate --to json:./generated/phase-2.json ./synth/phase-2 --random
+
+# Phase 3
+synth generate --to jsonl: ./synth/phase-5 --random
+
+#synth generate --to jsonl: ./synth --random | parse

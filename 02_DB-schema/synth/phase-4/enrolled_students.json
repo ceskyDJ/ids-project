@@ -19,7 +19,7 @@
                     "year": {
                         "type": "number",
                         "range": {
-                            "low": 2001,
+                            "low": 2018,
                             "high": 2022,
                             "step": 1
                         }
@@ -31,17 +31,13 @@
             "type": "number",
             "range": {
                 "low": 1,
-                "high": 6,
+                "high": 8,
                 "step": 1
             }
         },
         "study_program": {
             "type": "string",
-            "categorical": {
-                "bachelor": 60,
-                "master": 35,
-                "doctoral": 5
-            }
+            "pattern": "doctoral"
         }
     }
 }

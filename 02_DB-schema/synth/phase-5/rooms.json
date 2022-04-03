@@ -1,0 +1,4 @@
+{
+    "type": "datasource",
+    "path": "json:./generated/phase-2.json"
+}
