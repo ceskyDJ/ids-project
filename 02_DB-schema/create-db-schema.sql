@@ -17,8 +17,9 @@ DROP TABLE exam_dates;
 DROP TABLE students_admitted_to_exams;
 DROP TABLE exams PURGE;
 DROP TABLE lecturers_teaching_courses;
-DROP TABLE courses PURGE;
+DROP TABLE course_guarantors;
 DROP TABLE lecturers;
+DROP TABLE courses PURGE;
 DROP TABLE rooms;
 DROP TABLE enrolled_students;
 DROP TABLE users PURGE;
@@ -211,30 +212,38 @@ INSERT INTO lecturers (lecturer_id, room_label, email, phone_number)
     VALUES (220546, 'L206', 'klojza@gmail.com', '+420721504657');
 
 -- Courses
-INSERT INTO courses  (course_id, semester, name, abbreviation, awarded_credits, description, guarantor_id)
-    VALUES (10, 'summer', 'Database Systems', 'IDS', 5, 'IDS desc', 221456);
-INSERT INTO courses  (course_id, semester, name, abbreviation, awarded_credits, description, guarantor_id)
-    VALUES (20, 'summer', 'Binary Code Analysis', 'IAN', 4, 'IAN desc', 220300);
-INSERT INTO courses  (course_id, semester, name, abbreviation, awarded_credits, description, guarantor_id)
-    VALUES (30, 'winter', 'Calculus 2', 'IMA2', 4, 'IMA2 desc', 220300);
+INSERT INTO courses  (course_abbreviation, semester, name, awarded_credits, description)
+    VALUES ('IDS', 'summer', 'Database Systems', 5, 'IDS desc');
+INSERT INTO courses  (course_abbreviation, semester, name, awarded_credits, description)
+    VALUES ('IAN', 'summer', 'Binary Code Analysis', 4, 'IAN desc');
+INSERT INTO courses  (course_abbreviation, semester, name, awarded_credits, description)
+    VALUES ('IMA2', 'winter', 'Calculus 2', 4, 'IMA2 desc');
+
+-- Course guarantors (Lecturers <-> Courses)
+INSERT INTO course_guarantors (course_abbreviation, academic_year, guarantor_id)
+    VALUES ('IDS', '2021/2022', 221456);
+INSERT INTO course_guarantors (course_abbreviation, academic_year, guarantor_id)
+    VALUES ('IAN', '2021/2022', 220300);
+INSERT INTO course_guarantors (course_abbreviation, academic_year, guarantor_id)
+    VALUES ('IMA2', '2021/2022', 220300);
 
 -- Lecturers teaching courses (Lecturers <-> Courses)
-INSERT INTO lecturers_teaching_courses (lecturer_id, course_id)
-    VALUES (220546, 10);
-INSERT INTO lecturers_teaching_courses (lecturer_id, course_id)
-    VALUES (220546, 20);
-INSERT INTO lecturers_teaching_courses (lecturer_id, course_id)
-    VALUES (220300, 30);
+INSERT INTO lecturers_teaching_courses (lecturer_id, course_abbreviation, academic_year)
+    VALUES (220546, 'IDS', '2021/2022');
+INSERT INTO lecturers_teaching_courses (lecturer_id, course_abbreviation, academic_year)
+    VALUES (220546, 'IAN', '2021/2022');
+INSERT INTO lecturers_teaching_courses (lecturer_id, course_abbreviation, academic_year)
+    VALUES (220300, 'IMA2', '2021/2022');
 
 -- Exams
-INSERT INTO exams (exam_id, course_id, academic_year, type, time_limit, max_points, min_points)
-    VALUES (12, 10, '2021/2022', 'midterm', 60, 15, 0);
-INSERT INTO exams (exam_id, course_id, academic_year, type, time_limit, max_points, min_points)
-    VALUES (33, 10, '2021/2022', 'term', 100, 51, 20);
-INSERT INTO exams (exam_id, course_id, academic_year, type, time_limit, max_points, min_points)
-    VALUES (50, 20, '2021/2022', 'term', 50, 40, 0);
-INSERT INTO exams (exam_id, course_id, academic_year, type, time_limit, max_points, min_points)
-    VALUES (62, 30, '2021/2022', 'term', 120, 80, 40);
+INSERT INTO exams (exam_id, course_abbreviation, academic_year, type, time_limit, max_points, min_points)
+    VALUES (12, 'IDS', '2021/2022', 'midterm', 60, 15, 0);
+INSERT INTO exams (exam_id, course_abbreviation, academic_year, type, time_limit, max_points, min_points)
+    VALUES (33, 'IDS', '2021/2022', 'term', 100, 51, 20);
+INSERT INTO exams (exam_id, course_abbreviation, academic_year, type, time_limit, max_points, min_points)
+    VALUES (50, 'IAN', '2021/2022', 'term', 50, 40, 0);
+INSERT INTO exams (exam_id, course_abbreviation, academic_year, type, time_limit, max_points, min_points)
+    VALUES (62, 'IMA2', '2021/2022', 'term', 120, 80, 40);
 
 -- Students admitted to exams (Enrolled students <-> Exams)
 INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
