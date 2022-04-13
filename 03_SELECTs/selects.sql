@@ -294,6 +294,50 @@ INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer
     VALUES (100, 3, 220546, 4, CURRENT_TIMESTAMP, 'wrong usage of ternary operator');
 INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
     VALUES (101, 1, 220546, 15, CURRENT_TIMESTAMP, 'flawless definition, good job');
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (101, 2, 220546, 0, CURRENT_TIMESTAMP, 'you absolutely don''t know what it is about');
 
 
 ---------------------------------------------------------------------------------------------------------------- SELECTS
+-- What are average assessments in exam dates of exam with ID 62?
+WITH summary_results AS (
+    SELECT exam_date_number, student_id, SUM(qa.awarded_points) students_summary_points
+        FROM enrolled_students st
+        JOIN registered_exam_dates rd USING (student_id, academic_year)
+        JOIN exam_dates ed USING (exam_id, exam_date_number)
+        JOIN exam_elaborations el USING (student_id, academic_year, exam_id, exam_date_number)
+        JOIN question_assessments qa USING (exam_elaboration_id)
+        WHERE exam_id = 62
+        GROUP BY exam_date_number, student_id
+)
+SELECT exam_date_number, AVG(students_summary_points) points_average
+    FROM summary_results
+    GROUP BY exam_date_number;
+
+-- How many students were evaluated by each lecturers in the 1st exam date of the exam with ID 62? Lecturers that didn't
+-- evaluate any students won't be included.
+WITH evaluated_exams AS (
+    SELECT DISTINCT lecturer_id, us.first_name, us.last_name, el.exam_id, el.exam_date_number
+        FROM lecturers le
+        JOIN users us ON le.lecturer_id = us.user_id
+        JOIN question_assessments qa USING (lecturer_id)
+        JOIN exam_elaborations el USING (exam_elaboration_id)
+)
+SELECT (ee.first_name || ' ' || ee.last_name || ' (' || ee.lecturer_id || ')') lecturer,
+       COUNT(*) evaluated_exams
+    FROM evaluated_exams ee
+    JOIN exam_dates ed USING (exam_id, exam_date_number)
+    WHERE exam_id = 62 and exam_date_number = 1
+    GROUP BY lecturer_id, ee.first_name, ee.last_name;
+
+-- What students have at least 1 question evaluated by 0 points in the 2st exam date of the exam with ID 62?
+SELECT student_id, us.login, (us.first_name || ' ' || us.last_name) fullname
+    FROM enrolled_students es
+    JOIN users us ON us.user_id = es.student_id
+    JOIN exam_elaborations ee USING (student_id, academic_year)
+    JOIN exam_dates ed USING (exam_id, exam_date_number)
+    WHERE exam_id = 62 AND exam_date_number = 2 AND EXISTS (
+        SELECT *
+            FROM question_assessments qa
+            WHERE qa.exam_elaboration_id = ee.exam_elaboration_id AND qa.awarded_points = 0
+    )
