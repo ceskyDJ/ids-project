@@ -247,6 +247,10 @@ INSERT INTO exams (exam_id, course_abbreviation, academic_year, type, time_limit
 
 -- Students admitted to exams (Enrolled students <-> Exams)
 INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 231754, 62, 40);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 231754, 33, 35);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
     VALUES ('2021/2022', 230974, 33, 30);
 INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
     VALUES ('2021/2022', 231754, 50, 50);
@@ -340,4 +344,40 @@ SELECT student_id, us.login, (us.first_name || ' ' || us.last_name) fullname
         SELECT *
             FROM question_assessments qa
             WHERE qa.exam_elaboration_id = ee.exam_elaboration_id AND qa.awarded_points = 0
+    );
+
+-- Write out all marks from the winter term of academic year 2021/22 for the student with ID 231754
+SELECT co.name || ' (' || co.course_abbreviation || ')' course, sa.points_so_far + SUM(qa.awarded_points) || ' ' || CASE
+        WHEN sa.points_so_far + SUM(qa.awarded_points) >= 90 THEN 'A'
+        WHEN sa.points_so_far + SUM(qa.awarded_points) >= 80 THEN 'B'
+        WHEN sa.points_so_far + SUM(qa.awarded_points) >= 70 THEN 'C'
+        WHEN sa.points_so_far + SUM(qa.awarded_points) >= 60 THEN 'D'
+        WHEN sa.points_so_far + SUM(qa.awarded_points) >= 50 THEN 'E'
+        ELSE 'F' END mark
+    FROM enrolled_students es
+    JOIN registered_exam_dates re ON es.student_id = re.student_id AND es.academic_year = re.academic_year
+    JOIN exam_dates ed ON re.exam_id = ed.exam_id AND re.exam_date_number = ed.exam_date_number
+    JOIN exams ex ON ed.exam_id = ex.exam_id
+    JOIN students_admitted_to_exams sa ON es.student_id = sa.student_id AND es.academic_year = sa.academic_year AND ex.exam_id = sa.exam_id
+    JOIN courses co ON ex.course_abbreviation = co.course_abbreviation
+    JOIN exam_elaborations ee ON ed.exam_id = ee.exam_id AND ed.exam_date_number = ee.exam_date_number
+    JOIN question_assessments qa ON ee.exam_elaboration_id = qa.exam_elaboration_id
+    WHERE es.student_id = 231754 AND ex.academic_year = '2021/2022' AND co.semester = 'winter' AND ed.exam_date_number = (
+        SELECT MAX(exam_date_number)
+            FROM exam_dates
+            JOIN registered_exam_dates USING (exam_id, exam_date_number)
+            WHERE student_id = es.student_id
     )
+    GROUP BY co.name, co.course_abbreviation, sa.points_so_far;
+
+-- What rooms are available right now?
+SELECT ro.room_label, ro.capacity
+    FROM rooms ro
+    WHERE NOT EXISTS(
+        SELECT *
+            FROM exam_dates ed
+            JOIN exams_in_rooms er USING (exam_id, exam_date_number)
+            JOIN exams ex USING (exam_id)
+            JOIN courses co USING (course_abbreviation)
+            WHERE room_label = ro.room_label AND CURRENT_TIMESTAMP BETWEEN ed.time_of_exam AND (ed.time_of_exam + NUMTODSINTERVAL(ex.time_limit, 'MINUTE'))
+    );
