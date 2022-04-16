@@ -473,6 +473,8 @@ INSERT INTO exam_elaborations (exam_elaboration_id, student_id, academic_year, e
 INSERT INTO exam_elaborations (exam_elaboration_id, student_id, academic_year, exam_id, exam_date_number, state_of_completion)
     VALUES (140, 231754, '2021/2022', 73, 1, 'completed');
 INSERT INTO exam_elaborations (exam_elaboration_id, student_id, academic_year, exam_id, exam_date_number, state_of_completion)
+    VALUES (141, 231754, '2021/2022', 73, 2, 'expelled');
+INSERT INTO exam_elaborations (exam_elaboration_id, student_id, academic_year, exam_id, exam_date_number, state_of_completion)
     VALUES (150, 230365, '2021/2022', 62, 1, 'completed');
 INSERT INTO exam_elaborations (exam_elaboration_id, student_id, academic_year, exam_id, exam_date_number, state_of_completion)
     VALUES (151, 230365, '2021/2022', 62, 2, 'completed');
@@ -673,42 +675,36 @@ SELECT student_id, us.login, (us.first_name || ' ' || us.last_name) fullname
     );
 
 -- Write out all marks from the winter term of academic year 2021/22 for the student with ID 231754
-SELECT co.name || ' (' || co.course_abbreviation || ')' course, sa.points_so_far + SUM(qa.awarded_points) || ' ' || CASE
-        WHEN sa.points_so_far + SUM(qa.awarded_points) >= 90 THEN 'A'
-        WHEN sa.points_so_far + SUM(qa.awarded_points) >= 80 THEN 'B'
-        WHEN sa.points_so_far + SUM(qa.awarded_points) >= 70 THEN 'C'
-        WHEN sa.points_so_far + SUM(qa.awarded_points) >= 60 THEN 'D'
-        WHEN sa.points_so_far + SUM(qa.awarded_points) >= 50 THEN 'E'
+WITH last_exam_dates AS (
+    SELECT ed.exam_id, rd.student_id, MAX(ed.exam_date_number) last_exam_date_number
+        FROM exam_dates ed
+        JOIN registered_exam_dates rd ON ed.exam_id = rd.exam_id AND ed.exam_date_number = rd.exam_date_number
+        GROUP BY ed.exam_id, rd.student_id
+), summary_points AS (
+    SELECT es.student_id, ex.exam_id, re.exam_date_number, COALESCE(SUM(qa.awarded_points), 0) points_summary
+        FROM enrolled_students es
+        JOIN registered_exam_dates re ON es.student_id = re.student_id AND es.academic_year = re.academic_year
+        JOIN exams ex ON re.exam_id = ex.exam_id
+        JOIN exam_elaborations ee ON es.student_id = ee.student_id AND es.academic_year = ee.academic_year AND ex.exam_id = ee.exam_id AND re.exam_date_number = ee.exam_date_number
+        LEFT JOIN question_assessments qa ON ee.exam_elaboration_id = qa.exam_elaboration_id
+        GROUP BY es.student_id, ex.exam_id, re.exam_date_number
+)
+SELECT DISTINCT co.name || ' (' || co.course_abbreviation || ')' course, sa.points_so_far + sp.points_summary || ' ' || CASE
+        WHEN sa.points_so_far + sp.points_summary >= 90 THEN 'A'
+        WHEN sa.points_so_far + sp.points_summary >= 80 THEN 'B'
+        WHEN sa.points_so_far + sp.points_summary >= 70 THEN 'C'
+        WHEN sa.points_so_far + sp.points_summary >= 60 THEN 'D'
+        WHEN sa.points_so_far + sp.points_summary >= 50 THEN 'E'
         ELSE 'F' END mark
     FROM enrolled_students es
     JOIN registered_exam_dates re ON es.student_id = re.student_id AND es.academic_year = re.academic_year
-    JOIN exam_dates ed ON re.exam_id = ed.exam_id AND re.exam_date_number = ed.exam_date_number
-    JOIN exams ex ON ed.exam_id = ex.exam_id
-    JOIN students_admitted_to_exams sa ON es.student_id = sa.student_id AND es.academic_year = sa.academic_year AND ex.exam_id = sa.exam_id
+    JOIN students_admitted_to_exams sa ON es.student_id = sa.student_id AND es.academic_year = sa.academic_year AND re.exam_id = sa.exam_id
+    JOIN exams ex ON sa.exam_id = ex.exam_id
     JOIN courses co ON ex.course_abbreviation = co.course_abbreviation
-    JOIN exam_elaborations ee ON ed.exam_id = ee.exam_id AND ed.exam_date_number = ee.exam_date_number
-    JOIN question_assessments qa ON ee.exam_elaboration_id = qa.exam_elaboration_id
-    WHERE es.student_id = 231754 AND ex.academic_year = '2021/2022' AND co.semester = 'winter' AND ed.exam_date_number = (
-        -- TODO needs selecting based on exam_elaboration_id? in current state does not work
-        SELECT MAX(exam_date_number)
-            FROM exam_dates
-            JOIN registered_exam_dates USING (exam_id, exam_date_number)
-            WHERE student_id = es.student_id
-    )
-    GROUP BY co.name, co.course_abbreviation, sa.points_so_far;
-
--- TODO try the above differently... choosing MAX exam date number has to correspond to given exam, not all of them
--- TODO not finished
-SELECT name, points_so_far + SUM (awarded_points) points
-FROM enrolled_students es
-JOIN exam_elaborations ee USING (student_id, academic_year)
-JOIN exam_dates USING (exam_id, exam_date_number)
-JOIN question_assessments USING (exam_elaboration_id)
-JOIN students_admitted_to_exams USING (student_id, academic_year, exam_id)
-JOIN exams USING (exam_id)
-JOIN courses USING (course_abbreviation)
-WHERE student_id = 231754 AND semester = 'winter'
-GROUP BY exam_id, exam_date_number, name, points_so_far;
+    JOIN last_exam_dates le ON ex.exam_id = le.exam_id AND es.student_id = le.student_id
+    JOIN summary_points sp ON es.student_id = sp.student_id AND ex.exam_id = sp.exam_id AND re.exam_date_number = sp.exam_date_number
+    WHERE es.student_id = 231754 AND ex.academic_year = '2021/2022' AND co.semester = 'winter' AND ex.type = 'term' AND re.exam_date_number = le.last_exam_date_number
+    ORDER BY course;
 
 -- Which rooms are available right now?
 SELECT ro.room_label, ro.capacity
@@ -723,7 +719,7 @@ SELECT ro.room_label, ro.capacity
     );
 
 -- Which exam dates in academic year 2021/2022 are available for registration by student with ID 230365?
-SELECT course_abbreviation course, type, format, exam_date_number date_number, time_of_exam, room_label room
+SELECT course_abbreviation course, type, exam_date_number date_number, format, time_of_exam, room_label room
     FROM enrolled_students es
     JOIN students_admitted_to_exams sa ON es.student_id = sa.student_id AND es.academic_year = sa.academic_year
     JOIN exams e USING (exam_id)
@@ -734,7 +730,7 @@ SELECT course_abbreviation course, type, format, exam_date_number date_number, t
     ORDER BY course_abbreviation, type, exam_date_number;
 
 -- Who, when and how did grade the 1st exam date of IAL term exam (ID 73) written by student with ID 230974?
-SELECT u.login, MAX(qa.time_of_assessments) time_of_assessment, SUM(qa.awarded_points) points
+SELECT (u.first_name || ' ' || u.last_name || ' (' || lecturer_id || ')') lecturer, MAX(qa.time_of_assessments) time_of_assessment, SUM(qa.awarded_points) points
     FROM registered_exam_dates red
     JOIN exam_dates ed ON (red.exam_id = ed.exam_id)
     JOIN exam_elaborations ee ON (ee.exam_id = ed.exam_id AND ee.exam_date_number = ed.exam_date_number AND
@@ -743,13 +739,13 @@ SELECT u.login, MAX(qa.time_of_assessments) time_of_assessment, SUM(qa.awarded_p
     JOIN lecturers l USING (lecturer_id)
     JOIN users u ON lecturer_id = u.user_id
     WHERE red.exam_id = 73 AND red.exam_date_number = 1 AND red.student_id = 230974 AND ee.student_id = 230974
-    GROUP BY u.login;
+    GROUP BY u.first_name, u.last_name, lecturer_id, u.login;
 
 -- Who teaches IDS and who is the guarantor in academic year 2021/2022?
 SELECT DISTINCT (u.first_name || ' ' || u.last_name) full_name, l.email, CASE
         WHEN u.user_id IN (SELECT guarantor_id FROM course_guarantors WHERE cg.academic_year = '2021/2022')
-        THEN 'GUARANTOR'
-        ELSE 'TEACHER' END role
+        THEN 'guarantor'
+        ELSE 'teacher' END role
     FROM courses c
     JOIN course_guarantors cg USING (course_abbreviation)
     JOIN lecturers_teaching_courses ltc USING (course_abbreviation)
