@@ -7,6 +7,9 @@
 -- Date: April 2022                 --
 --------------------------------------
 
+-- Help:
+-- dk = discriminator key (part of primary key in weak entities)
+
 ------------------------------------------------------------------------------------------------------------------ RESET
 -- PURGE is used for unnamed linked sequences deletion
 DROP TABLE question_assessments;
@@ -154,7 +157,7 @@ CREATE TABLE exam_elaborations (
 -- Question assessments
 CREATE TABLE question_assessments (
     exam_elaboration_id REFERENCES exam_elaborations(exam_elaboration_id), -- FK & PK
-    question_number NUMBER(2) CHECK(question_number > 0), -- PK TODO: number generation
+    question_number NUMBER(2) CHECK(question_number > 0), -- PK
     lecturer_id REFERENCES lecturers(lecturer_id) NOT NULL, -- FK
     time_of_assessments TIMESTAMP NOT NULL,
     awarded_points NUMBER(3) NOT NULL CHECK(awarded_points BETWEEN 0 and 100),
@@ -303,12 +306,11 @@ INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer
 
 
 --------------------------------------------------------------------------------------------------------------- TRIGGERS
--- Before insert to table exam_dates
-CREATE OR REPLACE TRIGGER bi_tg_exam_dates BEFORE INSERT ON exam_dates FOR EACH ROW
+-- Generating sequence for exam_date_number field in table exam_dates
+CREATE OR REPLACE TRIGGER bi_tg_exam_dates_dk BEFORE INSERT ON exam_dates FOR EACH ROW
 DECLARE
     v_last_number exam_dates.exam_date_number%type;
 BEGIN
-    -- Generating sequence for exam_date_number field
     SELECT MAX(exam_date_number) last_date_number
         INTO v_last_number
         FROM exam_dates
@@ -317,9 +319,29 @@ BEGIN
     :NEW.exam_date_number := v_last_number + 1;
 END;
 
+-- Generating sequence for question_number field in table question_assessments
+CREATE OR REPLACE TRIGGER bi_tg_question_assessments_dk BEFORE INSERT ON question_assessments FOR EACH ROW
+DECLARE
+    v_last_number question_assessments.question_number%type;
+BEGIN
+    SELECT MAX(question_number) last_question_number
+        INTO v_last_number
+        FROM question_assessments
+        WHERE exam_elaboration_id = :NEW.exam_elaboration_id;
+
+    :NEW.question_number := v_last_number + 1;
+END;
+
 
 ----------------------------------------------------------------------------------------------------------- TEST INSERTS
--- Check generating sequence for exam_date_number (bi_tg_exam_dates)
-INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
-    VALUES (33, NULL, 'written', 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 300);
+-- Check generating sequence for exam_date_number (bi_tg_exam_dates_dk)
 SELECT * FROM exam_dates WHERE exam_id = 33 ORDER BY exam_date_number DESC FETCH FIRST 1 ROW ONLY;
+INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
+    VALUES (33, NULL, 'written', 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 200);
+SELECT * FROM exam_dates WHERE exam_id = 33 ORDER BY exam_date_number DESC FETCH FIRST 1 ROW ONLY;
+
+-- Check generating sequence for question_assessments (bi_tg_question_assessments_dk)
+SELECT * FROM question_assessments WHERE exam_elaboration_id = 101 ORDER BY question_number DESC FETCH FIRST 1 ROW ONLY;
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (101, NULL, 220546, 0, CURRENT_TIMESTAMP, 'good job');
+SELECT * FROM question_assessments WHERE exam_elaboration_id = 101 ORDER BY question_number DESC FETCH FIRST 1 ROW ONLY;
