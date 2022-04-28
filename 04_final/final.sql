@@ -311,7 +311,7 @@ CREATE OR REPLACE TRIGGER bi_tg_exam_dates_dk BEFORE INSERT ON exam_dates FOR EA
 DECLARE
     v_last_number exam_dates.exam_date_number%type;
 BEGIN
-    SELECT MAX(exam_date_number) last_date_number
+    SELECT COALESCE(MAX(exam_date_number), 1) last_date_number
         INTO v_last_number
         FROM exam_dates
         WHERE exam_id = :NEW.exam_id;
@@ -324,7 +324,7 @@ CREATE OR REPLACE TRIGGER bi_tg_question_assessments_dk BEFORE INSERT ON questio
 DECLARE
     v_last_number question_assessments.question_number%type;
 BEGIN
-    SELECT MAX(question_number) last_question_number
+    SELECT COALESCE(MAX(question_number), 1) last_question_number
         INTO v_last_number
         FROM question_assessments
         WHERE exam_elaboration_id = :NEW.exam_elaboration_id;
