@@ -265,6 +265,10 @@ INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
     VALUES (62, 2, 'written', 11, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 400);
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
+    VALUES (62, 3, 'written', 12, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 200);
+INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
+    VALUES (62, 4, 'oral', 7, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 100);
+INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
     VALUES (33, 1, 'written', 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 300);
 
 -- Exams in rooms (Exam dates <-> Rooms)
@@ -332,6 +336,28 @@ BEGIN
     :NEW.question_number := v_last_number + 1;
 END;
 
+-- Students cannot register more than 3 exam dates for a term exam.
+CREATE OR REPLACE TRIGGER bi_tg_registered_exam_dates BEFORE INSERT ON registered_exam_dates FOR EACH ROW
+DECLARE
+    registered_too_many EXCEPTION;
+    v_num_of_registered registered_exam_dates.exam_date_number%type;
+BEGIN
+    SELECT COALESCE(MAX(exam_date_number), 0)
+        INTO v_num_of_registered
+        FROM registered_exam_dates red JOIN exam_dates USING (exam_id, exam_date_number) JOIN exams e USING (exam_id)
+        WHERE exam_id = :NEW.exam_id AND student_id = :NEW.student_id AND red.academic_year = :NEW.academic_year
+            AND e.type = 'term';
+
+    IF v_num_of_registered >= 3 THEN
+        RAISE registered_too_many;
+    END IF;
+
+    EXCEPTION
+        WHEN registered_too_many THEN
+            RAISE_APPLICATION_ERROR(-20000, 'Student ' || :NEW.student_id || ' cannot register another exam date for term exam '
+                                || :NEW.exam_id || ' in ' || :NEW.academic_year || '!');
+END;
+
 
 ----------------------------------------------------------------------------------------------------------- TEST INSERTS
 -- Check generating sequence for exam_date_number (bi_tg_exam_dates_dk)
@@ -345,3 +371,10 @@ SELECT * FROM question_assessments WHERE exam_elaboration_id = 101 ORDER BY ques
 INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
     VALUES (101, NULL, 220546, 0, CURRENT_TIMESTAMP, 'good job');
 SELECT * FROM question_assessments WHERE exam_elaboration_id = 101 ORDER BY question_number DESC FETCH FIRST 1 ROW ONLY;
+
+-- Check allowing students to register exam dates. Third is still ok.
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+VALUES (231754, '2021/2022', 62, 3);
+-- But fourth is not allowed.
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+VALUES (231754, '2021/2022', 62, 4);
