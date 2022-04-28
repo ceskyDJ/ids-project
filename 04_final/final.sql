@@ -254,6 +254,8 @@ INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, poin
     VALUES ('2021/2022', 230974, 33, 30);
 INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
     VALUES ('2021/2022', 231754, 50, 50);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 231754, 62, 30);
 
 -- Exam dates
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
@@ -265,11 +267,13 @@ INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
     VALUES (62, 2, 'written', 11, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 400);
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
-    VALUES (62, 3, 'written', 12, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 200);
+    VALUES (62, 3, 'written', 12, CURRENT_TIMESTAMP, TO_TIMESTAMP('2022-03-19 20:00:00', 'yyyy-mm-dd hh24:mi:ss'), TO_TIMESTAMP('2023-03-19 20:00:00', 'yyyy-mm-dd hh24:mi:ss'), 200);
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
-    VALUES (62, 4, 'oral', 7, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 100);
+    VALUES (62, 4, 'oral', 7, CURRENT_TIMESTAMP, TO_TIMESTAMP('2022-03-19 20:00:00', 'yyyy-mm-dd hh24:mi:ss'), TO_TIMESTAMP('2023-03-19 20:00:00', 'yyyy-mm-dd hh24:mi:ss'), 100);
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
     VALUES (33, 1, 'written', 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 300);
+INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
+    VALUES (33, 2, 'written', 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 150);
 
 -- Exams in rooms (Exam dates <-> Rooms)
 INSERT INTO exams_in_rooms (exam_id, exam_date_number, room_label)
@@ -337,7 +341,7 @@ BEGIN
 END;
 
 -- Students cannot register more than 3 exam dates for a term exam.
-CREATE OR REPLACE TRIGGER bi_tg_registered_exam_dates BEFORE INSERT ON registered_exam_dates FOR EACH ROW
+CREATE OR REPLACE TRIGGER bi_tg_maximum_registered_exam_dates BEFORE INSERT ON registered_exam_dates FOR EACH ROW
 DECLARE
     registered_too_many EXCEPTION;
     v_num_of_registered registered_exam_dates.exam_date_number%type;
@@ -355,9 +359,68 @@ BEGIN
     EXCEPTION
         WHEN registered_too_many THEN
             RAISE_APPLICATION_ERROR(-20000, 'Student ' || :NEW.student_id || ' cannot register another exam date for term exam '
-                                || :NEW.exam_id || ' in ' || :NEW.academic_year || '!');
+                                || :NEW.exam_id || ' in ' || :NEW.academic_year || '! Maximum of 3 already reached!');
 END;
 
+CREATE OR REPLACE PROCEDURE usp_register_exam_date (
+    in_student_id students_admitted_to_exams.student_id%type,
+    in_academic_year students_admitted_to_exams.academic_year%type,
+    in_exam_id students_admitted_to_exams.exam_id%type,
+    in_exam_date_number exam_dates.exam_date_number%type)
+IS
+    v_reg_start exam_dates.registration_start%type;
+    v_reg_end exam_dates.registration_end%type;
+    v_max_registered_exam_date registered_exam_dates.exam_date_number%type;
+    v_max_existing_exam_date exam_dates.exam_date_number%type;
+    v_exam_admission students_admitted_to_exams%rowtype;
+BEGIN
+
+    -- Check student is admitted
+    SELECT *
+        INTO v_exam_admission
+        FROM students_admitted_to_exams sae
+        WHERE sae.student_id = in_student_id AND sae.academic_year = in_academic_year AND sae.exam_id = in_exam_id;
+
+    SELECT COALESCE(MAX(exam_date_number), 0)
+        INTO v_max_existing_exam_date
+        FROM exam_dates JOIN exams USING (exam_id)
+        WHERE exam_id = in_exam_id AND academic_year = in_academic_year;
+
+    IF (in_exam_date_number > v_max_existing_exam_date) THEN
+        DBMS_OUTPUT.PUT_LINE('Cannot register not existing exam date number ' || in_exam_date_number || ' for exam ' || in_exam_id);
+        RETURN;
+    END IF;
+
+    SELECT registration_start
+        INTO v_reg_start
+        FROM exam_dates ed
+        WHERE ed.exam_id = in_exam_id AND ed.exam_date_number = in_exam_date_number;
+
+    SELECT registration_end
+        INTO v_reg_end
+        FROM exam_dates ed
+        WHERE ed.exam_id = in_exam_id AND ed.exam_date_number = in_exam_date_number;
+
+    SELECT COALESCE(MAX(exam_date_number), 0)
+        INTO v_max_registered_exam_date
+        FROM registered_exam_dates red
+        WHERE red.student_id = in_student_id AND red.exam_id = in_exam_id AND red.academic_year = in_academic_year;
+
+    IF (CURRENT_TIMESTAMP < v_reg_start) THEN
+        DBMS_OUTPUT.PUT_LINE('Registration for exam date ' || in_exam_date_number || ' of exam ' || in_exam_id ||
+                             ' has not yet started!');
+    ELSIF (CURRENT_TIMESTAMP > v_reg_end) THEN
+        DBMS_OUTPUT.PUT_LINE('Registration for exam date ' || in_exam_date_number || ' of exam ' || in_exam_id ||
+                             ' has already ended!');
+    ELSE
+        INSERT INTO registered_exam_dates VALUES (in_exam_id, in_exam_date_number, in_student_id, in_academic_year);
+    END IF;
+
+    EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('Student ' || in_student_id || ' is not admitted to exam ' || in_exam_id ||
+                             ', cannot be registered!');
+END;
 
 ----------------------------------------------------------------------------------------------------------- TEST INSERTS
 -- Check generating sequence for exam_date_number (bi_tg_exam_dates_dk)
@@ -372,9 +435,20 @@ INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer
     VALUES (101, NULL, 220546, 0, CURRENT_TIMESTAMP, 'good job');
 SELECT * FROM question_assessments WHERE exam_elaboration_id = 101 ORDER BY question_number DESC FETCH FIRST 1 ROW ONLY;
 
--- Check allowing students to register exam dates. Third is still ok.
-INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
-VALUES (231754, '2021/2022', 62, 3);
--- But fourth is not allowed.
-INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
-VALUES (231754, '2021/2022', 62, 4);
+-- Check allowing students to register exam dates. Non existing exam date number 13.
+begin
+usp_register_exam_date(231754, '2021/2022', 62, 13);
+end;
+
+-- Third (third in total) is ok.
+begin
+usp_register_exam_date(231754, '2021/2022', 62, 3);
+end;
+
+-- Check 3rd exam date is registered.
+SELECT * FROM registered_exam_dates;
+
+-- But fourth (in total) is not allowed.
+begin
+usp_register_exam_date(231754, '2021/2022', 62, 4);
+end;
