@@ -186,6 +186,22 @@ INSERT INTO users (user_id, login, password, first_name, last_name, date_of_birt
     VALUES (230999, 'xkubik36', '838vh1ghs0hf', 'Radovan', 'Kubík', TO_DATE('1997-04-11', 'yyyy-mm-dd'));
 INSERT INTO users (user_id, login, password, first_name, last_name, date_of_birth)
     VALUES (220546, 'ilojza', '^)#&hslgh07503', 'Květoslav', 'Lojza', TO_DATE('1971-12-20', 'yyyy-mm-dd'));
+INSERT INTO users (user_id, login, password, first_name, last_name, date_of_birth)
+    VALUES (220777, 'xkotak12', '^)#&hsjfdsk3333', 'Samuel', 'Kotaki', TO_DATE('11-11-1996', 'dd-mm-yyyy'));
+INSERT INTO users (user_id, login, password, first_name, last_name, date_of_birth)
+    VALUES (221343, 'xhorne00', '^)#&hfd5682##sk33', 'Micheal', 'Horner', TO_DATE('8-8-1996', 'dd-mm-yyyy'));
+INSERT INTO users (user_id, login, password, first_name, last_name, date_of_birth)
+    VALUES (221600, 'xpalav13', '^)#&h568^#@l2##33', 'Ondřej', 'Pálava', TO_DATE('8-8-1996', 'dd-mm-yyyy'));
+INSERT INTO users (user_id, login, password, first_name, last_name, date_of_birth)
+    VALUES (220800, 'igolan', '^)#&6^53^^@2#33', 'Radim', 'Goláň', TO_DATE('4-4-1973', 'dd-mm-yyyy'));
+INSERT INTO users (user_id, login, password, first_name, last_name, date_of_birth)
+    VALUES (220900, 'ineumann', '^)#&53^@535##', 'Vladislav', 'Neumann', TO_DATE('1-5-1985', 'dd-mm-yyyy'));
+INSERT INTO users (user_id, login, password, first_name, last_name, date_of_birth)
+    VALUES (220950, 'mozola', '^)6$%#535##', 'Radovan', 'Mozola', TO_DATE('17-3-1960', 'dd-mm-yyyy'));
+INSERT INTO users (user_id, login, password, first_name, last_name, date_of_birth)
+    VALUES (220880, 'soudek', '^)635#jfkds#', 'Pavel', 'Soudek', TO_DATE('28-5-1958', 'dd-mm-yyyy'));
+INSERT INTO users (user_id, login, password, first_name, last_name, date_of_birth)
+    VALUES (220740, 'hrncir', '^)6$%7777fjfkd$$fjfk', 'Otakar', 'Hrnčíř', TO_DATE('11-7-1971', 'dd-mm-yyyy'));
 
 -- Enrolled students
 INSERT INTO enrolled_students (student_id, academic_year, year_of_study, study_program)
@@ -196,6 +212,12 @@ INSERT INTO enrolled_students (student_id, academic_year, year_of_study, study_p
     VALUES (230365, '2021/2022', '2', 'bachelor');
 INSERT INTO enrolled_students (student_id, academic_year, year_of_study, study_program)
     VALUES (229797, '2021/2022', '2', 'master');
+INSERT INTO enrolled_students (student_id, academic_year, year_of_study, study_program)
+    VALUES (220777, '2021/2022', '3', 'bachelor');
+INSERT INTO enrolled_students (student_id, academic_year, year_of_study, study_program)
+    VALUES (221343, '2021/2022', '2', 'master');
+INSERT INTO enrolled_students (student_id, academic_year, year_of_study, study_program)
+    VALUES (221600, '2021/2022', '4', 'bachelor');
 
 -- Rooms
 INSERT INTO rooms (room_label, capacity)
@@ -206,6 +228,12 @@ INSERT INTO rooms (room_label, capacity)
     VALUES ('D105', 350);
 INSERT INTO rooms (room_label, capacity)
     VALUES ('E105', 150);
+INSERT INTO rooms (room_label, capacity)
+    VALUES ('E112', 250);
+INSERT INTO rooms (room_label, capacity)
+    VALUES ('C121', 70);
+INSERT INTO rooms (room_label, capacity)
+    VALUES ('A222', 10);
 
 -- Lecturers
 INSERT INTO lecturers (lecturer_id, room_label, email, phone_number)
@@ -214,6 +242,16 @@ INSERT INTO lecturers (lecturer_id, room_label, email)
     VALUES (221456, 'L108', 'imesner@fit.cz');
 INSERT INTO lecturers (lecturer_id, room_label, email, phone_number)
     VALUES (220546, 'L206', 'klojza@gmail.com', '+420721504657');
+INSERT INTO lecturers (lecturer_id, room_label, email)
+    VALUES (220950, 'A222', 'mozola@openfwt.org');
+INSERT INTO lecturers (lecturer_id, room_label, email)
+    VALUES (220800, 'A222', 'golan@vutbr.cz');
+INSERT INTO lecturers (lecturer_id, room_label, email)
+    VALUES (220900, 'L108', 'neumann.vladislav@gmail.com');
+INSERT INTO lecturers (lecturer_id, room_label, email)
+    VALUES (220880, 'L108', 'soudekpa@fit.cz');
+INSERT INTO lecturers (lecturer_id, room_label, email)
+    VALUES (220740, 'A222', 'hrncir@protomon.com');
 
 -- Courses
 INSERT INTO courses  (course_abbreviation, semester, name, awarded_credits, description)
@@ -222,6 +260,10 @@ INSERT INTO courses  (course_abbreviation, semester, name, awarded_credits, desc
     VALUES ('IAN', 'summer', 'Binary Code Analysis', 4, 'IAN desc');
 INSERT INTO courses  (course_abbreviation, semester, name, awarded_credits, description)
     VALUES ('IMA2', 'winter', 'Calculus 2', 4, 'IMA2 desc');
+INSERT INTO courses  (course_abbreviation, semester, name, awarded_credits, description)
+    VALUES ('IAL', 'winter', 'Algorithms', 5, 'Sorting, trees, structures and stuff');
+INSERT INTO courses  (course_abbreviation, semester, name, awarded_credits, description)
+    VALUES ('INP', 'winter', 'Design of Computer Systems', 6, 'Brainfuck CPU');
 
 -- Course guarantors (Lecturers <-> Courses)
 INSERT INTO course_guarantors (course_abbreviation, academic_year, guarantor_id)
@@ -230,14 +272,32 @@ INSERT INTO course_guarantors (course_abbreviation, academic_year, guarantor_id)
     VALUES ('IAN', '2021/2022', 220300);
 INSERT INTO course_guarantors (course_abbreviation, academic_year, guarantor_id)
     VALUES ('IMA2', '2021/2022', 220300);
+INSERT INTO course_guarantors (course_abbreviation, academic_year, guarantor_id)
+    VALUES ('IAL', '2021/2022', 220950);
+INSERT INTO course_guarantors (course_abbreviation, academic_year, guarantor_id)
+    VALUES ('INP', '2021/2022', 220950);
 
 -- Lecturers teaching courses (Lecturers <-> Courses)
 INSERT INTO lecturers_teaching_courses (lecturer_id, course_abbreviation, academic_year)
     VALUES (220546, 'IDS', '2021/2022');
 INSERT INTO lecturers_teaching_courses (lecturer_id, course_abbreviation, academic_year)
+    VALUES (221456, 'IDS', '2021/2022');
+INSERT INTO lecturers_teaching_courses (lecturer_id, course_abbreviation, academic_year)
     VALUES (220546, 'IAN', '2021/2022');
 INSERT INTO lecturers_teaching_courses (lecturer_id, course_abbreviation, academic_year)
     VALUES (220300, 'IMA2', '2021/2022');
+INSERT INTO lecturers_teaching_courses (lecturer_id, course_abbreviation, academic_year)
+    VALUES (220950, 'IAL', '2021/2022');
+INSERT INTO lecturers_teaching_courses (lecturer_id, course_abbreviation, academic_year)
+    VALUES (220950, 'INP', '2021/2022');
+INSERT INTO lecturers_teaching_courses (lecturer_id, course_abbreviation, academic_year)
+    VALUES (220800, 'IAL', '2021/2022');
+INSERT INTO lecturers_teaching_courses (lecturer_id, course_abbreviation, academic_year)
+    VALUES (220900, 'IDS', '2021/2022');
+INSERT INTO lecturers_teaching_courses (lecturer_id, course_abbreviation, academic_year)
+    VALUES (220880, 'IMA2', '2021/2022');
+INSERT INTO lecturers_teaching_courses (lecturer_id, course_abbreviation, academic_year)
+    VALUES (220740, 'IMA2', '2021/2022');
 
 -- Exams
 INSERT INTO exams (exam_id, course_abbreviation, academic_year, type, time_limit, max_points, min_points)
@@ -245,17 +305,61 @@ INSERT INTO exams (exam_id, course_abbreviation, academic_year, type, time_limit
 INSERT INTO exams (exam_id, course_abbreviation, academic_year, type, time_limit, max_points, min_points)
     VALUES (33, 'IDS', '2021/2022', 'term', 100, 51, 20);
 INSERT INTO exams (exam_id, course_abbreviation, academic_year, type, time_limit, max_points, min_points)
+    VALUES (40, 'IAN', '2021/2022', 'midterm', 40, 20, 0);
+INSERT INTO exams (exam_id, course_abbreviation, academic_year, type, time_limit, max_points, min_points)
     VALUES (50, 'IAN', '2021/2022', 'term', 50, 40, 0);
 INSERT INTO exams (exam_id, course_abbreviation, academic_year, type, time_limit, max_points, min_points)
     VALUES (62, 'IMA2', '2021/2022', 'term', 120, 80, 40);
+INSERT INTO exams (exam_id, course_abbreviation, academic_year, type, time_limit, max_points, min_points)
+    VALUES (70, 'IAL', '2021/2022', 'midterm', 40, 20, 0);
+INSERT INTO exams (exam_id, course_abbreviation, academic_year, type, time_limit, max_points, min_points)
+    VALUES (73, 'IAL', '2021/2022', 'term', 100, 50, 15);
+INSERT INTO exams (exam_id, course_abbreviation, academic_year, type, time_limit, max_points, min_points)
+    VALUES (5, 'IAL', '2020/2021', 'term', 100, 50, 15);
+INSERT INTO exams (exam_id, course_abbreviation, academic_year, type, time_limit, max_points, min_points)
+    VALUES (80, 'INP', '2021/2022', 'midterm', 50, 25, 0);
+INSERT INTO exams (exam_id, course_abbreviation, academic_year, type, time_limit, max_points, min_points)
+    VALUES (85, 'INP', '2021/2022', 'term', 120, 60, 20);
 
 -- Students admitted to exams (Enrolled students <-> Exams)
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 231754, 62, 15);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 231754, 33, 35);
 INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
     VALUES ('2021/2022', 230974, 33, 30);
 INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
     VALUES ('2021/2022', 231754, 50, 50);
 INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
-    VALUES ('2021/2022', 231754, 62, 30);
+    VALUES ('2021/2022', 230365, 70, 10);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 220777, 70, 11);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 230974, 70, 9);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 230974, 73, 20);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 230974, 80, 13);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 231754, 80, 7);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 231754, 73, 10);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 231754, 70, 10);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 230365, 80, 10);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 230365, 62, 14);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 230365, 73, 15);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 221600, 12, 5);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 221600, 33, 10);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 221600, 73, 11);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 221600, 62, 15);
 
 -- Exam dates
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
@@ -274,6 +378,18 @@ INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of
     VALUES (33, 1, 'written', 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 300);
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
     VALUES (33, 2, 'written', 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 150);
+INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
+    VALUES (33, 3, 'written', 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 150);
+INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
+    VALUES (70, 1, 'written', 7, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 400);
+INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
+    VALUES (70, 2, 'written', 7, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 400);
+INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
+    VALUES (73, 1, 'written', 8, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 800);
+INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
+    VALUES (73, 2, 'written', 8, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 600);
+INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
+    VALUES (73, 3, 'written', 7, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 300);
 
 -- Exams in rooms (Exam dates <-> Rooms)
 INSERT INTO exams_in_rooms (exam_id, exam_date_number, room_label)
@@ -283,33 +399,240 @@ INSERT INTO exams_in_rooms (exam_id, exam_date_number, room_label)
 INSERT INTO exams_in_rooms (exam_id, exam_date_number, room_label)
     VALUES (62, 2, 'E105');
 INSERT INTO exams_in_rooms (exam_id, exam_date_number, room_label)
+    VALUES (62, 3, 'E105');
+INSERT INTO exams_in_rooms (exam_id, exam_date_number, room_label)
     VALUES (33, 1, 'E105');
+INSERT INTO exams_in_rooms (exam_id, exam_date_number, room_label)
+    VALUES (33, 2, 'D105');
+INSERT INTO exams_in_rooms (exam_id, exam_date_number, room_label)
+    VALUES (33, 3, 'E105');
+INSERT INTO exams_in_rooms (exam_id, exam_date_number, room_label)
+    VALUES (70, 1, 'D105');
+INSERT INTO exams_in_rooms (exam_id, exam_date_number, room_label)
+    VALUES (70, 2, 'D105');
+INSERT INTO exams_in_rooms (exam_id, exam_date_number, room_label)
+    VALUES (73, 1, 'E105');
+INSERT INTO exams_in_rooms (exam_id, exam_date_number, room_label)
+    VALUES (73, 2, 'E105');
+INSERT INTO exams_in_rooms (exam_id, exam_date_number, room_label)
+    VALUES (73, 3, 'E105');
 
 -- Registered exam dates (Enrolled students <-> Exam dates)
 INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
     VALUES (231754, '2021/2022', 62, 1);
 INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
     VALUES (231754, '2021/2022', 62, 2);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (230974, '2021/2022', 33, 1);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (230974, '2021/2022', 70, 1);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (230974, '2021/2022', 70, 2);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (230974, '2021/2022', 73, 1);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (231754, '2021/2022', 73, 1);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (231754, '2021/2022', 33, 1);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (231754, '2021/2022', 73, 2);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (230365, '2021/2022', 62, 1);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (230365, '2021/2022', 62, 2);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (230365, '2021/2022', 70, 1);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (230365, '2021/2022', 73, 1);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (221600, '2021/2022', 12, 1);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (221600, '2021/2022', 33, 1);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (221600, '2021/2022', 33, 2);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (221600, '2021/2022', 73, 1);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (221600, '2021/2022', 73, 2);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (221600, '2021/2022', 62, 1);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (221600, '2021/2022', 62, 2);
+INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
+    VALUES (221600, '2021/2022', 62, 3);
 
 -- Exam elaborations (Enrolled students <-> Exam dates)
 INSERT INTO exam_elaborations (exam_elaboration_id, student_id, academic_year, exam_id, exam_date_number, state_of_completion)
     VALUES (100, 231754, '2021/2022', 62, 1, 'expelled');
 INSERT INTO exam_elaborations (exam_elaboration_id, student_id, academic_year, exam_id, exam_date_number, state_of_completion)
     VALUES (101, 231754, '2021/2022', 62, 2, 'completed');
+INSERT INTO exam_elaborations (exam_elaboration_id, student_id, academic_year, exam_id, exam_date_number, state_of_completion)
+    VALUES (110, 231754, '2021/2022', 33, 1, 'completed');
+INSERT INTO exam_elaborations (exam_elaboration_id, student_id, academic_year, exam_id, exam_date_number, state_of_completion)
+    VALUES (120, 230974, '2021/2022', 62, 1, 'completed');
+INSERT INTO exam_elaborations (exam_elaboration_id, student_id, academic_year, exam_id, exam_date_number, state_of_completion)
+    VALUES (121, 230974, '2021/2022', 62, 2, 'completed');
+INSERT INTO exam_elaborations (exam_elaboration_id, student_id, academic_year, exam_id, exam_date_number, state_of_completion)
+    VALUES (130, 230974, '2021/2022', 73, 1, 'completed');
+INSERT INTO exam_elaborations (exam_elaboration_id, student_id, academic_year, exam_id, exam_date_number, state_of_completion)
+    VALUES (140, 231754, '2021/2022', 73, 1, 'completed');
+INSERT INTO exam_elaborations (exam_elaboration_id, student_id, academic_year, exam_id, exam_date_number, state_of_completion)
+    VALUES (141, 231754, '2021/2022', 73, 2, 'expelled');
+INSERT INTO exam_elaborations (exam_elaboration_id, student_id, academic_year, exam_id, exam_date_number, state_of_completion)
+    VALUES (150, 230365, '2021/2022', 62, 1, 'completed');
+INSERT INTO exam_elaborations (exam_elaboration_id, student_id, academic_year, exam_id, exam_date_number, state_of_completion)
+    VALUES (151, 230365, '2021/2022', 62, 2, 'completed');
+INSERT INTO exam_elaborations (exam_elaboration_id, student_id, academic_year, exam_id, exam_date_number, state_of_completion)
+    VALUES (160, 221600, '2021/2022', 62, 1, 'completed');
+INSERT INTO exam_elaborations (exam_elaboration_id, student_id, academic_year, exam_id, exam_date_number, state_of_completion)
+    VALUES (161, 221600, '2021/2022', 62, 2, 'completed');
+INSERT INTO exam_elaborations (exam_elaboration_id, student_id, academic_year, exam_id, exam_date_number, state_of_completion)
+    VALUES (162, 221600, '2021/2022', 62, 3, 'completed');
 
 -- Question assessments
 INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
-    VALUES (100, 1, 220546, 8, CURRENT_TIMESTAMP, 'minor mistake in notation');
+    VALUES (100, 1, 220300, 8, CURRENT_TIMESTAMP, 'minor mistake in notation');
 INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
-    VALUES (100, 2, 220546, 10, CURRENT_TIMESTAMP, 'ok');
+    VALUES (100, 2, 220300, 12, CURRENT_TIMESTAMP, 'ok');
 INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
-    VALUES (100, 3, 220546, 4, CURRENT_TIMESTAMP, 'wrong usage of ternary operator');
+    VALUES (100, 3, 220300, 8, CURRENT_TIMESTAMP, 'not so ok');
 INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
-    VALUES (101, 1, 220546, 15, CURRENT_TIMESTAMP, 'flawless definition, good job');
+    VALUES (100, 4, 220300, 7, CURRENT_TIMESTAMP, 'kinda bad');
 INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
-    VALUES (101, 2, 220546, 0, CURRENT_TIMESTAMP, 'you absolutely don''t know what it is about');
+    VALUES (100, 5, 220300, 0, CURRENT_TIMESTAMP, 'you absolutely do not know what it is about');
 
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (101, 1, 220300, 15, CURRENT_TIMESTAMP, 'flawless definition, good job');
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (101, 2, 220300, 11, CURRENT_TIMESTAMP, 'kinda okey');
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (101, 3, 220300, 10, CURRENT_TIMESTAMP, 'meh');
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (101, 4, 220300, 5, CURRENT_TIMESTAMP, 'are you serious?');
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (101, 5, 220300, 12, CURRENT_TIMESTAMP, 'ok');
 
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (110, 1, 220546, 2, CURRENT_TIMESTAMP, 'not enough');
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (110, 2, 220546, 10, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (110, 3, 220546, 9, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (110, 4, 220546, 8, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (110, 5, 220546, 11, CURRENT_TIMESTAMP, 'this answer does indeed suffice');
+
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (120, 1, 220546, 11, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (120, 2, 220546, 12, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (120, 3, 220740, 3, CURRENT_TIMESTAMP, 'nonsense, what were you thinking?!?');
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (120, 4, 220546, 10, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (120, 5, 220546, 11, CURRENT_TIMESTAMP, 'bravo');
+
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (121, 1, 220740, 11, CURRENT_TIMESTAMP, 'ok');
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (121, 2, 220740, 12, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (121, 3, 220546, 10, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (121, 4, 220740, 15, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (121, 5, 220740, 15, CURRENT_TIMESTAMP, 'not so difficult, see?');
+
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (130, 1, 220950, 4, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (130, 2, 220950, 6, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (130, 3, 220950, 3, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (130, 4, 220950, 2, CURRENT_TIMESTAMP, 'wrong order of operators');
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (130, 5, 220950, 6, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (130, 6, 220950, 5, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (130, 7, 220950, 6, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (130, 8, 220950, 4, CURRENT_TIMESTAMP);
+
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (140, 1, 220950, 5, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (140, 2, 220950, 4, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (140, 3, 220950, 6, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (140, 4, 220950, 2, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (140, 5, 220950, 4, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (140, 6, 220950, 5, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (140, 7, 220950, 4, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (140, 8, 220950, 4, CURRENT_TIMESTAMP, 'solid results, above average');
+
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (150, 1, 220300, 15, CURRENT_TIMESTAMP, 'ok');
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (150, 2, 220300, 11, CURRENT_TIMESTAMP, 'almost there, missing final result');
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (150, 3, 220300, 15, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (150, 4, 220300, 15, CURRENT_TIMESTAMP, 'nice job');
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments, "comment")
+    VALUES (150, 5, 220300, 0, CURRENT_TIMESTAMP, 'you forgot this one?');
+
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (151, 1, 220300, 15, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (151, 2, 220300, 15, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (151, 3, 220300, 15, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (151, 4, 220300, 15, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (151, 5, 220300, 15, CURRENT_TIMESTAMP);
+
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (160, 1, 220300, 15, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (160, 2, 220300, 12, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (160, 3, 220300, 13, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (160, 4, 220300, 10, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (160, 5, 220300, 0, CURRENT_TIMESTAMP);
+
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (161, 1, 220300, 15, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (161, 2, 220300, 12, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (161, 3, 220300, 13, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (161, 4, 220300, 0, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (161, 5, 220300, 9, CURRENT_TIMESTAMP);
+
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (162, 1, 220300, 15, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (162, 2, 220300, 12, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (162, 3, 220300, 13, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (162, 4, 220300, 14, CURRENT_TIMESTAMP);
+INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer_id, awarded_points, time_of_assessments)
+    VALUES (162, 5, 220300, 15, CURRENT_TIMESTAMP);
 ------------------------------------------------------------------------------------------------------------------ VIEWS
 
 
@@ -422,6 +745,40 @@ BEGIN
                              ', cannot be registered!');
 END;
 
+-- Assume given exam has a condition, where a single question evaluated by 0 points
+-- results in 0 from the whole exam. In that case, we set all question_assessments'
+-- awarded points to zero in that specific exam_elaboration.
+CREATE OR REPLACE PROCEDURE usp_zero_out_results_if_zero_question (
+in_exam_id exam_dates.exam_id%type,
+in_exam_date_number exam_dates.exam_date_number%type)
+IS
+    CURSOR questions_to_zero_out IS
+        WITH have_zero_point_question AS (
+            SELECT exam_elaboration_id
+            FROM enrolled_students es
+            JOIN users us ON us.user_id = es.student_id
+            JOIN exam_elaborations ee USING (student_id, academic_year)
+            JOIN exam_dates ed USING (exam_id, exam_date_number)
+            WHERE exam_id = in_exam_id AND exam_date_number = in_exam_date_number AND EXISTS (
+                SELECT *
+                    FROM question_assessments qa
+                    WHERE qa.exam_elaboration_id = ee.exam_elaboration_id AND qa.awarded_points = 0
+                )
+        )
+        SELECT exam_elaboration_id, question_number, awarded_points
+        FROM have_zero_point_question
+        JOIN question_assessments USING (exam_elaboration_id)
+    FOR UPDATE OF awarded_points;
+BEGIN
+    FOR question in questions_to_zero_out
+    LOOP
+        UPDATE question_assessments
+            SET awarded_points = 0
+            WHERE exam_elaboration_id = question.exam_elaboration_id AND
+                  question_number = question.question_number;
+    END LOOP;
+END;
+
 ----------------------------------------------------------------------------------------------------------- TEST INSERTS
 -- Check generating sequence for exam_date_number (bi_tg_exam_dates_dk)
 SELECT * FROM exam_dates WHERE exam_id = 33 ORDER BY exam_date_number DESC FETCH FIRST 1 ROW ONLY;
@@ -435,20 +792,23 @@ INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer
     VALUES (101, NULL, 220546, 0, CURRENT_TIMESTAMP, 'good job');
 SELECT * FROM question_assessments WHERE exam_elaboration_id = 101 ORDER BY question_number DESC FETCH FIRST 1 ROW ONLY;
 
+-- Zero out all questions from this specific exam if at least one question is evaluated by 0 points.
+BEGIN
+    usp_zero_out_results_if_zero_question(62, 1);
+END;
+-- TODO show it? I don't think it's such a good idea to put so many selects in here...
+
 -- Check allowing students to register exam dates. Non existing exam date number 13.
-begin
+BEGIN
 usp_register_exam_date(231754, '2021/2022', 62, 13);
-end;
+END;
 
 -- Third (third in total) is ok.
-begin
+BEGIN
 usp_register_exam_date(231754, '2021/2022', 62, 3);
-end;
+END;
 
--- Check 3rd exam date is registered.
-SELECT * FROM registered_exam_dates;
-
--- But fourth (in total) is not allowed.
-begin
+-- But registering fourth (in total) is not allowed.
+BEGIN
 usp_register_exam_date(231754, '2021/2022', 62, 4);
-end;
+END;
