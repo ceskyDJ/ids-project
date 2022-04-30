@@ -11,7 +11,8 @@
 -- dk = discriminator key (part of primary key in weak entities)
 
 ------------------------------------------------------------------------------------------------------------------ RESET
--- PURGE is used for unnamed linked sequences deletion
+-- Tables
+-- Note: PURGE is used for unnamed linked sequences deletion
 DROP TABLE question_assessments;
 DROP TABLE exam_elaborations PURGE;
 DROP TABLE registered_exam_dates;
@@ -26,6 +27,10 @@ DROP TABLE courses PURGE;
 DROP TABLE rooms;
 DROP TABLE enrolled_students;
 DROP TABLE users PURGE;
+
+-- Indexes
+DROP INDEX ix_exam_elaborations_exam_id;
+DROP INDEX ix_question_assessments_exam_elaboration_id;
 
 
 ----------------------------------------------------------------------------------------------------------------- TABLES
@@ -217,7 +222,7 @@ INSERT INTO enrolled_students (student_id, academic_year, year_of_study, study_p
 INSERT INTO enrolled_students (student_id, academic_year, year_of_study, study_program)
     VALUES (221343, '2021/2022', '2', 'master');
 INSERT INTO enrolled_students (student_id, academic_year, year_of_study, study_program)
-    VALUES (221600, '2021/2022', '4', 'bachelor');
+    VALUES (221600, '2021/2022', '4', 'bachelor');
 
 -- Rooms
 INSERT INTO rooms (room_label, capacity)
@@ -389,7 +394,7 @@ INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
     VALUES (73, 2, 'written', 8, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 600);
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
-    VALUES (73, 3, 'written', 7, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 300);
+    VALUES (73, 3, 'written', 7, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 300);
 
 -- Exams in rooms (Exam dates <-> Rooms)
 INSERT INTO exams_in_rooms (exam_id, exam_date_number, room_label)
@@ -751,8 +756,8 @@ END;
 -- results in 0 from the whole exam. In that case, we set all question_assessments'
 -- awarded points to zero in that specific exam_elaboration.
 CREATE OR REPLACE PROCEDURE usp_zero_out_results_if_zero_question (
-in_exam_id exam_dates.exam_id%type,
-in_exam_date_number exam_dates.exam_date_number%type)
+    in_exam_id exam_dates.exam_id%type,
+    in_exam_date_number exam_dates.exam_date_number%type)
 IS
     CURSOR questions_to_zero_out IS
         WITH have_zero_point_question AS (
@@ -781,16 +786,12 @@ BEGIN
     END LOOP;
 END;
 
------------------------------------------------------------------------------------------------------------ INDEXES
--- TODO doing this the obvious and dumb way...
-DROP INDEX ee_exam_id_IX;
-CREATE INDEX ee_exam_id_IX ON exam_elaborations (exam_id);
+---------------------------------------------------------------------------------------------------------------- INDEXES
+CREATE INDEX ix_exam_elaborations_exam_id ON exam_elaborations (exam_id);
 -- improves 6: TABLE ACCESS FULL -> TABLE ACCESS BY INDEX ROWID BATCHED, INDEX RANGE SCAN
 
-DROP INDEX qa_exam_elaboration_id_IX;
-CREATE INDEX qa_exam_elaboration_id_IX ON question_assessments (exam_elaboration_id DESC);
+CREATE INDEX ix_question_assessments_exam_elaboration_id ON question_assessments (exam_elaboration_id DESC);
 -- does A LOT OF STUFF to 9: may not be better because INDEX FULL SCAN and the other stuff...
-
 COMMIT;
 
 EXPLAIN PLAN FOR
@@ -827,19 +828,18 @@ SELECT * FROM question_assessments WHERE exam_elaboration_id = 101 ORDER BY ques
 BEGIN
     usp_zero_out_results_if_zero_question(62, 1);
 END;
--- TODO show it? I don't think it's such a good idea to put so many selects in here...
 
 -- Check allowing students to register exam dates. Non existing exam date number 13.
 BEGIN
-usp_register_exam_date(231754, '2021/2022', 62, 13);
+    usp_register_exam_date(231754, '2021/2022', 62, 13);
 END;
 
 -- Third (third in total) is ok.
 BEGIN
-usp_register_exam_date(231754, '2021/2022', 62, 3);
+    usp_register_exam_date(231754, '2021/2022', 62, 3);
 END;
 
 -- But registering fourth (in total) is not allowed.
 BEGIN
-usp_register_exam_date(231754, '2021/2022', 62, 4);
+    usp_register_exam_date(231754, '2021/2022', 62, 4);
 END;
