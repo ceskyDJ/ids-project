@@ -32,6 +32,8 @@ DROP TABLE users PURGE;
 DROP INDEX ix_exam_elaborations_exam_id;
 DROP INDEX ix_question_assessments_exam_elaboration_id;
 
+-- TODO: REVOKEs?
+
 
 ----------------------------------------------------------------------------------------------------------------- TABLES
 -- Users
@@ -641,6 +643,43 @@ INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer
 
 COMMIT;
 ------------------------------------------------------------------------------------------------------------------ VIEWS
+-- Write out all marks from the winter term of academic year 2021/22 for the student with ID 231754
+-- (just reused from 3rd part of project for adding a way how student could operate with DB)
+-- FIXME
+CREATE VIEW student_marks AS
+    WITH last_exam_dates AS (
+        SELECT ed.exam_id, rd.student_id, MAX(ed.exam_date_number) last_exam_date_number
+            FROM exam_dates ed
+            JOIN registered_exam_dates rd ON ed.exam_id = rd.exam_id AND ed.exam_date_number = rd.exam_date_number
+            GROUP BY ed.exam_id, rd.student_id
+    ), summary_points AS (
+        SELECT es.student_id, ex.exam_id, re.exam_date_number, COALESCE(SUM(qa.awarded_points), 0) points_summary
+            FROM enrolled_students es
+            JOIN registered_exam_dates re ON es.student_id = re.student_id AND es.academic_year = re.academic_year
+            JOIN exams ex ON re.exam_id = ex.exam_id
+            JOIN exam_elaborations ee ON es.student_id = ee.student_id AND es.academic_year = ee.academic_year AND ex.exam_id = ee.exam_id AND re.exam_date_number = ee.exam_date_number
+            LEFT JOIN question_assessments qa ON ee.exam_elaboration_id = qa.exam_elaboration_id
+            GROUP BY es.student_id, ex.exam_id, re.exam_date_number
+    )
+    SELECT DISTINCT es.student_id, ex.academic_year, co.semester, co.name course_name, co.course_abbreviation, sa.points_so_far + sp.points_summary || ' ' || CASE
+            WHEN sa.points_so_far + sp.points_summary >= 90 THEN 'A'
+            WHEN sa.points_so_far + sp.points_summary >= 80 THEN 'B'
+            WHEN sa.points_so_far + sp.points_summary >= 70 THEN 'C'
+            WHEN sa.points_so_far + sp.points_summary >= 60 THEN 'D'
+            WHEN sa.points_so_far + sp.points_summary >= 50 THEN 'E'
+            ELSE 'F' END mark
+        FROM enrolled_students es
+        JOIN registered_exam_dates re ON es.student_id = re.student_id AND es.academic_year = re.academic_year
+        JOIN students_admitted_to_exams sa ON es.student_id = sa.student_id AND es.academic_year = sa.academic_year AND re.exam_id = sa.exam_id
+        JOIN exams ex ON sa.exam_id = ex.exam_id
+        JOIN courses co ON ex.course_abbreviation = co.course_abbreviation
+        JOIN last_exam_dates le ON ex.exam_id = le.exam_id AND es.student_id = le.student_id
+        JOIN summary_points sp ON es.student_id = sp.student_id AND ex.exam_id = sp.exam_id AND re.exam_date_number = sp.exam_date_number
+        WHERE ex.type = 'term' AND re.exam_date_number = le.last_exam_date_number
+        GROUP BY es.student_id, ex.academic_year, co.semester,  co.name, co.course_abbreviation, sa.points_so_far
+        ORDER BY course_name;
+
+-- TODO: add some materialized view
 
 
 --------------------------------------------------------------------------------------------------------------- TRIGGERS
@@ -780,7 +819,7 @@ BEGIN
     FOR question in questions_to_zero_out
     LOOP
         UPDATE question_assessments
-            SET awarded_points = 0
+            SET awarded_points = 0 --TODO: , "comment" = 'Zeroed out due to condition of no zero questions. Original awarded points: ' || question.awarded_points
             WHERE exam_elaboration_id = question.exam_elaboration_id AND
                   question_number = question.question_number;
     END LOOP;
@@ -810,6 +849,27 @@ SELECT exam_date_number, AVG(students_summary_points) points_average
     GROUP BY exam_date_number;
 
 SELECT * FROM table(DBMS_XPLAN.DISPLAY());
+
+
+------------------------------------------------------------------------------------------------------------ PERMISSIONS
+-- Second user (xhavli56) acts like a student
+
+-- Access to taught courses nad information about guarantors and lecturers
+GRANT SELECT ON courses TO xhavli56;
+GRANT SELECT ON course_guarantors TO xhavli56;
+GRANT SELECT ON lecturers_teaching_courses TO xhavli56;
+
+-- Access to information about exams and exam dates + where they are
+GRANT SELECT ON exams TO xhavli56;
+GRANT SELECT ON exam_dates TO xhavli56;
+GRANT SELECT ON exams_in_rooms TO xhavli56;
+
+-- Access to information about available rooms
+GRANT SELECT ON rooms TO xhavli56;
+
+-- Use views for personal information
+GRANT SELECT ON student_marks TO xhavli56;
+
 
 ----------------------------------------------------------------------------------------------------------- TEST INSERTS
 -- Check generating sequence for exam_date_number (bi_tg_exam_dates_dk)
