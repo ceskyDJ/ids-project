@@ -11,12 +11,11 @@
 -- dk = discriminator key (part of primary key in weak entities)
 
 -- Error codes:
--- 20000 : Registering for more term exam dates than allowed (3).
--- 20001 : Registering for more midterm exam dates than allowed (1).
--- 20002 : Registering exam date for an exam to which student is not admitted.
--- 20003 : Registering for non existent exam date.
--- 20004 : Registering before registration is open.
--- 20005 : Registering after registration is closed.
+-- 20000 : Registering for more exam dates than allowed.
+-- 20001 : Registering exam date for an exam to which student is not admitted.
+-- 20002 : Registering for non existent exam date.
+-- 20003 : Registering outside permitted registration time window.
+-- 20004 : User who is not an enrolled student trying to register exam date.
 
 ------------------------------------------------------------------------------------------------------------------ RESET
 -- Tables
@@ -381,6 +380,8 @@ INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, poin
     VALUES ('2021/2022', 221600, 73, 11);
 INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
     VALUES ('2021/2022', 221600, 62, 15);
+INSERT INTO students_admitted_to_exams (academic_year, student_id, exam_id, points_so_far)
+    VALUES ('2021/2022', 230974, 62, 14);
 
 -- Exam dates
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
@@ -775,7 +776,7 @@ BEGIN
             RAISE_APPLICATION_ERROR(-20000, 'Student ' || :NEW.student_id || ' cannot register another exam date for term exam '
                                 || :NEW.exam_id || ' in ' || :NEW.academic_year || '! Maximum of 3 already reached!');
         WHEN registered_too_many_midterm THEN
-            RAISE_APPLICATION_ERROR(-20001, 'Student ' || :NEW.student_id || ' cannot register another exam date for midterm exam '
+            RAISE_APPLICATION_ERROR(-20000, 'Student ' || :NEW.student_id || ' cannot register another exam date for midterm exam '
                 || :NEW.exam_id || ' in ' || :NEW.academic_year || '! Maximum of 1 already reached!');
 END;
 
@@ -803,7 +804,7 @@ BEGIN
         WHERE exam_id = in_exam_id AND academic_year = in_academic_year;
 
     IF (in_exam_date_number > v_max_existing_exam_date) THEN
-        RAISE_APPLICATION_ERROR(-20003, 'Cannot register not existing exam date number ' || in_exam_date_number || ' for exam ' || in_exam_id || '.');
+        RAISE_APPLICATION_ERROR(-20002, 'Cannot register not existing exam date number ' || in_exam_date_number || ' for exam ' || in_exam_id || '.');
         RETURN;
     END IF;
 
@@ -818,10 +819,10 @@ BEGIN
         WHERE ed.exam_id = in_exam_id AND ed.exam_date_number = in_exam_date_number;
 
     IF (CURRENT_TIMESTAMP < v_reg_start) THEN
-        RAISE_APPLICATION_ERROR(-20004, 'Registration for exam date ' || in_exam_date_number || ' of exam ' || in_exam_id ||
+        RAISE_APPLICATION_ERROR(-20003, 'Registration for exam date ' || in_exam_date_number || ' of exam ' || in_exam_id ||
                              ' has not yet started!');
     ELSIF (CURRENT_TIMESTAMP > v_reg_end) THEN
-        RAISE_APPLICATION_ERROR(-20005, 'Registration for exam date ' || in_exam_date_number || ' of exam ' || in_exam_id ||
+        RAISE_APPLICATION_ERROR(-20003, 'Registration for exam date ' || in_exam_date_number || ' of exam ' || in_exam_id ||
                              ' has already ended!');
     ELSE
         INSERT INTO registered_exam_dates VALUES (in_exam_id, in_exam_date_number, in_student_id, in_academic_year);
@@ -829,8 +830,30 @@ BEGIN
 
     EXCEPTION
     WHEN NO_DATA_FOUND THEN
-        RAISE_APPLICATION_ERROR(-20002, 'Student ' || in_student_id || ' is not admitted to exam ' || in_exam_id ||
+        RAISE_APPLICATION_ERROR(-20001, 'Student ' || in_student_id || ' is not admitted to exam ' || in_exam_id ||
                              ', cannot be registered!');
+END;
+
+CREATE OR REPLACE PROCEDURE usp_register_my_own_exam_date(
+    in_academic_year students_admitted_to_exams.academic_year%type,
+    in_exam_id students_admitted_to_exams.exam_id%type,
+    in_exam_date_number exam_dates.exam_date_number%type)
+IS
+    v_my_student_id enrolled_students.student_id%type;
+BEGIN
+    SELECT student_id
+    INTO v_my_student_id
+    FROM enrolled_students es
+    JOIN users us ON es.student_id = us.user_id
+    WHERE login = LOWER(SYS_CONTEXT('USERENV', 'CURRENT_USER'));
+
+    usp_register_exam_date(v_my_student_id, in_academic_year, in_exam_id, in_exam_date_number);
+
+    EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RAISE_APPLICATION_ERROR(-20004, 'User' || SYS_CONTEXT('USERENV', 'CURRENT_USER') ||
+                                ' is not an enrolled student!');
+
 END;
 
 -- Assume given exam has a condition, where a single question evaluated by 0 points
