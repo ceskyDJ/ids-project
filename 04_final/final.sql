@@ -39,6 +39,8 @@ DROP TABLE users PURGE;
 -- Views
 DROP VIEW students_marks;
 DROP VIEW my_marks;
+DROP VIEW my_exam_dates;
+DROP VIEW my_available_exam_dates;
 
 -- Indexes (removed with tables)
 -- DROP INDEX ix_exam_elaborations_exam_id;
@@ -190,7 +192,7 @@ CREATE TABLE question_assessments (
 INSERT INTO users (user_id, login, password, first_name, last_name, date_of_birth)
     VALUES (230974, 'xhavli56', '893hfww0hs', 'Martin', 'Havlik', TO_DATE('2000-08-19', 'yyyy-mm-dd'));
 INSERT INTO users (user_id, login, password, first_name, last_name, date_of_birth)
-    VALUES (231754, 'xsmahe01', '80hsfd89&57', 'Aleš', 'Holeš', TO_DATE('1999-02-27', 'yyyy-mm-dd'));
+    VALUES (231754, 'xsmahe01', '80hsfd89&57', 'Michal', 'Šmahel', TO_DATE('1999-02-27', 'yyyy-mm-dd'));
 INSERT INTO users (user_id, login, password, first_name, last_name, date_of_birth)
     VALUES (230365, 'xrados22', 'h6GT0gx3', 'Milan', 'Radostný', TO_DATE('2000-10-01', 'yyyy-mm-dd'));
 INSERT INTO users (user_id, login, password, first_name, last_name, date_of_birth)
@@ -685,10 +687,33 @@ CREATE VIEW students_marks AS
 -- Write marks only for currently logged in user
 CREATE VIEW my_marks AS
     SELECT semester, course_name, course_abbreviation, mark
-    FROM students_marks sm
-    JOIN enrolled_students es ON sm.student_id = es.student_id AND sm.academic_year = es.academic_year
-    JOIN users us ON es.student_id = us.user_id
-    WHERE us.login = LOWER(SYS_CONTEXT('USERENV','CURRENT_USER'));
+        FROM students_marks sm
+        JOIN enrolled_students es ON sm.student_id = es.student_id AND sm.academic_year = es.academic_year
+        JOIN users us ON es.student_id = us.user_id
+        WHERE us.login = LOWER(SYS_CONTEXT('USERENV','CURRENT_USER'));
+
+-- Write registered exam dates for currently logged in user
+CREATE VIEW my_exam_dates AS
+    SELECT co.course_abbreviation, co.name course_name, ex.type exam_type, ed.exam_date_number date_number, ed.format, time_of_exam
+        FROM exam_dates ed
+        JOIN registered_exam_dates rd ON ed.exam_id = rd.exam_id AND ed.exam_date_number = rd.exam_date_number
+        JOIN exams ex ON ed.exam_id = ex.exam_id
+        JOIN courses co ON ex.course_abbreviation = co.course_abbreviation
+        JOIN enrolled_students es ON rd.student_id = es.student_id AND rd.academic_year = es.academic_year
+        JOIN users us ON es.student_id = us.user_id
+        WHERE us.login = LOWER(SYS_CONTEXT('USERENV','CURRENT_USER'));
+
+-- Write available exam dates for currently logged in user
+CREATE VIEW my_available_exam_dates AS
+    SELECT co.course_abbreviation,co.name course_name,type exam_type,ed.exam_date_number date_number,format,time_of_exam
+        FROM enrolled_students es
+        JOIN students_admitted_to_exams sa ON es.student_id = sa.student_id AND es.academic_year = sa.academic_year
+        JOIN exams ex ON sa.exam_id = ex.exam_id
+        JOIN exam_dates ed ON ex.exam_id = ed.exam_id
+        JOIN exams_in_rooms er ON ed.exam_id = er.exam_id AND ed.exam_date_number = er.exam_date_number
+        JOIN courses co ON ex.course_abbreviation = co.course_abbreviation
+        JOIN users us ON es.student_id = us.user_id
+        WHERE us.login = LOWER(SYS_CONTEXT('USERENV','CURRENT_USER')) AND CURRENT_TIMESTAMP BETWEEN ed.registration_start AND ed.registration_end;
 
 -- TODO: add some materialized view
 
@@ -884,8 +909,10 @@ GRANT SELECT ON exams_in_rooms TO xhavli56;
 -- Access to information about available rooms
 GRANT SELECT ON rooms TO xhavli56;
 
--- Use views for personal information
+-- Use views for personal information about study
 GRANT SELECT ON my_marks TO xhavli56;
+GRANT SELECT ON my_exam_dates TO xhavli56;
+GRANT SELECT ON my_available_exam_dates TO xhavli56;
 
 ------------------------------------------------------------------------------------------------------------------ TESTS
 -- Check generating sequence for exam_date_number (bi_tg_exam_dates_dk)
