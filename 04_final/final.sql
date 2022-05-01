@@ -10,6 +10,14 @@
 -- Help:
 -- dk = discriminator key (part of primary key in weak entities)
 
+-- Error codes:
+-- 20000 : Registering for more term exam dates than allowed (3).
+-- 20001 : Registering for more midterm exam dates than allowed (1).
+-- 20002 : Registering exam date for an exam to which student is not admitted.
+-- 20003 : Registering for non existent exam date.
+-- 20004 : Registering before registration is open.
+-- 20005 : Registering after registration is closed.
+
 ------------------------------------------------------------------------------------------------------------------ RESET
 -- Tables
 -- Note: PURGE is used for unnamed linked sequences deletion
@@ -714,23 +722,36 @@ END;
 -- Students cannot register more than 3 exam dates for a term exam.
 CREATE OR REPLACE TRIGGER bi_tg_maximum_registered_exam_dates BEFORE INSERT ON registered_exam_dates FOR EACH ROW
 DECLARE
-    registered_too_many EXCEPTION;
-    v_num_of_registered registered_exam_dates.exam_date_number%type;
+    registered_too_many_term EXCEPTION;
+    registered_too_many_midterm EXCEPTION;
+    v_num_of_registered_term registered_exam_dates.exam_date_number%type;
+    v_num_of_registered_midterm registered_exam_dates.exam_date_number%type;
 BEGIN
     SELECT COALESCE(MAX(exam_date_number), 0)
-        INTO v_num_of_registered
+        INTO v_num_of_registered_term
         FROM registered_exam_dates red JOIN exam_dates USING (exam_id, exam_date_number) JOIN exams e USING (exam_id)
         WHERE exam_id = :NEW.exam_id AND student_id = :NEW.student_id AND red.academic_year = :NEW.academic_year
             AND e.type = 'term';
 
-    IF v_num_of_registered >= 3 THEN
-        RAISE registered_too_many;
+    SELECT COALESCE(MAX(exam_date_number), 0)
+        INTO v_num_of_registered_midterm
+        FROM registered_exam_dates red JOIN exam_dates USING (exam_id, exam_date_number) JOIN exams e USING (exam_id)
+        WHERE exam_id = :NEW.exam_id AND student_id = :NEW.student_id AND red.academic_year = :NEW.academic_year
+            AND e.type = 'midterm';
+
+    IF v_num_of_registered_term >= 3 THEN
+        RAISE registered_too_many_term;
+    ELSIF v_num_of_registered_midterm >= 1 THEN
+        RAISE registered_too_many_midterm;
     END IF;
 
     EXCEPTION
-        WHEN registered_too_many THEN
+        WHEN registered_too_many_term THEN
             RAISE_APPLICATION_ERROR(-20000, 'Student ' || :NEW.student_id || ' cannot register another exam date for term exam '
                                 || :NEW.exam_id || ' in ' || :NEW.academic_year || '! Maximum of 3 already reached!');
+        WHEN registered_too_many_midterm THEN
+            RAISE_APPLICATION_ERROR(-20001, 'Student ' || :NEW.student_id || ' cannot register another exam date for midterm exam '
+                || :NEW.exam_id || ' in ' || :NEW.academic_year || '! Maximum of 1 already reached!');
 END;
 
 CREATE OR REPLACE PROCEDURE usp_register_exam_date (
@@ -741,7 +762,6 @@ CREATE OR REPLACE PROCEDURE usp_register_exam_date (
 IS
     v_reg_start exam_dates.registration_start%type;
     v_reg_end exam_dates.registration_end%type;
-    v_max_registered_exam_date registered_exam_dates.exam_date_number%type;
     v_max_existing_exam_date exam_dates.exam_date_number%type;
     v_exam_admission students_admitted_to_exams%rowtype;
 BEGIN
@@ -758,7 +778,7 @@ BEGIN
         WHERE exam_id = in_exam_id AND academic_year = in_academic_year;
 
     IF (in_exam_date_number > v_max_existing_exam_date) THEN
-        DBMS_OUTPUT.PUT_LINE('Cannot register not existing exam date number ' || in_exam_date_number || ' for exam ' || in_exam_id);
+        RAISE_APPLICATION_ERROR(-20003, 'Cannot register not existing exam date number ' || in_exam_date_number || ' for exam ' || in_exam_id || '.');
         RETURN;
     END IF;
 
@@ -772,16 +792,11 @@ BEGIN
         FROM exam_dates ed
         WHERE ed.exam_id = in_exam_id AND ed.exam_date_number = in_exam_date_number;
 
-    SELECT COALESCE(MAX(exam_date_number), 0)
-        INTO v_max_registered_exam_date
-        FROM registered_exam_dates red
-        WHERE red.student_id = in_student_id AND red.exam_id = in_exam_id AND red.academic_year = in_academic_year;
-
     IF (CURRENT_TIMESTAMP < v_reg_start) THEN
-        DBMS_OUTPUT.PUT_LINE('Registration for exam date ' || in_exam_date_number || ' of exam ' || in_exam_id ||
+        RAISE_APPLICATION_ERROR(-20004, 'Registration for exam date ' || in_exam_date_number || ' of exam ' || in_exam_id ||
                              ' has not yet started!');
     ELSIF (CURRENT_TIMESTAMP > v_reg_end) THEN
-        DBMS_OUTPUT.PUT_LINE('Registration for exam date ' || in_exam_date_number || ' of exam ' || in_exam_id ||
+        RAISE_APPLICATION_ERROR(-20005, 'Registration for exam date ' || in_exam_date_number || ' of exam ' || in_exam_id ||
                              ' has already ended!');
     ELSE
         INSERT INTO registered_exam_dates VALUES (in_exam_id, in_exam_date_number, in_student_id, in_academic_year);
@@ -789,7 +804,7 @@ BEGIN
 
     EXCEPTION
     WHEN NO_DATA_FOUND THEN
-        DBMS_OUTPUT.PUT_LINE('Student ' || in_student_id || ' is not admitted to exam ' || in_exam_id ||
+        RAISE_APPLICATION_ERROR(-20002, 'Student ' || in_student_id || ' is not admitted to exam ' || in_exam_id ||
                              ', cannot be registered!');
 END;
 
