@@ -819,7 +819,7 @@ BEGIN
     FOR question in questions_to_zero_out
     LOOP
         UPDATE question_assessments
-            SET awarded_points = 0 --TODO: , "comment" = 'Zeroed out due to condition of no zero questions. Original awarded points: ' || question.awarded_points
+            SET awarded_points = 0, "comment" = 'Zeroed out due to condition of no zero questions. Original awarded points: ' || question.awarded_points
             WHERE exam_elaboration_id = question.exam_elaboration_id AND
                   question_number = question.question_number;
     END LOOP;
