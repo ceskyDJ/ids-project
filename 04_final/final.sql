@@ -887,7 +887,7 @@ GRANT SELECT ON rooms TO xhavli56;
 -- Use views for personal information
 GRANT SELECT ON my_marks TO xhavli56;
 
------------------------------------------------------------------------------------------------------------ TEST INSERTS
+------------------------------------------------------------------------------------------------------------------ TESTS
 -- Check generating sequence for exam_date_number (bi_tg_exam_dates_dk)
 SELECT * FROM exam_dates WHERE exam_id = 33 ORDER BY exam_date_number DESC FETCH FIRST 1 ROW ONLY;
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
@@ -919,3 +919,9 @@ END;
 BEGIN
     usp_register_exam_date(231754, '2021/2022', 62, 4);
 END;
+
+-- Test for students_marks view
+SELECT * FROM students_marks;
+
+-- Test for my_marks view - it should write marks for logged in user
+SELECT * FROM my_marks;
