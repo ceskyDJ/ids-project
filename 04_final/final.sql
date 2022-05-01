@@ -28,9 +28,13 @@ DROP TABLE rooms;
 DROP TABLE enrolled_students;
 DROP TABLE users PURGE;
 
--- Indexes
-DROP INDEX ix_exam_elaborations_exam_id;
-DROP INDEX ix_question_assessments_exam_elaboration_id;
+-- Views
+DROP VIEW students_marks;
+DROP VIEW my_marks;
+
+-- Indexes (removed with tables)
+-- DROP INDEX ix_exam_elaborations_exam_id;
+-- DROP INDEX ix_question_assessments_exam_elaboration_id;
 
 -- TODO: REVOKEs?
 
@@ -178,7 +182,7 @@ CREATE TABLE question_assessments (
 INSERT INTO users (user_id, login, password, first_name, last_name, date_of_birth)
     VALUES (230974, 'xhavli56', '893hfww0hs', 'Martin', 'Havlik', TO_DATE('2000-08-19', 'yyyy-mm-dd'));
 INSERT INTO users (user_id, login, password, first_name, last_name, date_of_birth)
-    VALUES (231754, 'xholes12', '80hsfd89&57', 'Aleš', 'Holeš', TO_DATE('1999-02-27', 'yyyy-mm-dd'));
+    VALUES (231754, 'xsmahe01', '80hsfd89&57', 'Aleš', 'Holeš', TO_DATE('1999-02-27', 'yyyy-mm-dd'));
 INSERT INTO users (user_id, login, password, first_name, last_name, date_of_birth)
     VALUES (230365, 'xrados22', 'h6GT0gx3', 'Milan', 'Radostný', TO_DATE('2000-10-01', 'yyyy-mm-dd'));
 INSERT INTO users (user_id, login, password, first_name, last_name, date_of_birth)
@@ -643,30 +647,20 @@ INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer
 
 COMMIT;
 ------------------------------------------------------------------------------------------------------------------ VIEWS
--- Write out all marks from the winter term of academic year 2021/22 for the student with ID 231754
--- (just reused from 3rd part of project for adding a way how student could operate with DB)
--- FIXME
-CREATE VIEW student_marks AS
+-- Write out all marks for all students
+CREATE VIEW students_marks AS
     WITH last_exam_dates AS (
         SELECT ed.exam_id, rd.student_id, MAX(ed.exam_date_number) last_exam_date_number
             FROM exam_dates ed
             JOIN registered_exam_dates rd ON ed.exam_id = rd.exam_id AND ed.exam_date_number = rd.exam_date_number
             GROUP BY ed.exam_id, rd.student_id
-    ), summary_points AS (
-        SELECT es.student_id, ex.exam_id, re.exam_date_number, COALESCE(SUM(qa.awarded_points), 0) points_summary
-            FROM enrolled_students es
-            JOIN registered_exam_dates re ON es.student_id = re.student_id AND es.academic_year = re.academic_year
-            JOIN exams ex ON re.exam_id = ex.exam_id
-            JOIN exam_elaborations ee ON es.student_id = ee.student_id AND es.academic_year = ee.academic_year AND ex.exam_id = ee.exam_id AND re.exam_date_number = ee.exam_date_number
-            LEFT JOIN question_assessments qa ON ee.exam_elaboration_id = qa.exam_elaboration_id
-            GROUP BY es.student_id, ex.exam_id, re.exam_date_number
     )
-    SELECT DISTINCT es.student_id, ex.academic_year, co.semester, co.name course_name, co.course_abbreviation, sa.points_so_far + sp.points_summary || ' ' || CASE
-            WHEN sa.points_so_far + sp.points_summary >= 90 THEN 'A'
-            WHEN sa.points_so_far + sp.points_summary >= 80 THEN 'B'
-            WHEN sa.points_so_far + sp.points_summary >= 70 THEN 'C'
-            WHEN sa.points_so_far + sp.points_summary >= 60 THEN 'D'
-            WHEN sa.points_so_far + sp.points_summary >= 50 THEN 'E'
+    SELECT DISTINCT es.student_id, ex.academic_year, co.semester, co.name course_name, co.course_abbreviation, sa.points_so_far + COALESCE(SUM(qa.awarded_points), 0) || ' ' || CASE
+            WHEN sa.points_so_far + COALESCE(SUM(qa.awarded_points), 0) >= 90 THEN 'A'
+            WHEN sa.points_so_far + COALESCE(SUM(qa.awarded_points), 0) >= 80 THEN 'B'
+            WHEN sa.points_so_far + COALESCE(SUM(qa.awarded_points), 0) >= 70 THEN 'C'
+            WHEN sa.points_so_far + COALESCE(SUM(qa.awarded_points), 0) >= 60 THEN 'D'
+            WHEN sa.points_so_far + COALESCE(SUM(qa.awarded_points), 0) >= 50 THEN 'E'
             ELSE 'F' END mark
         FROM enrolled_students es
         JOIN registered_exam_dates re ON es.student_id = re.student_id AND es.academic_year = re.academic_year
@@ -674,13 +668,21 @@ CREATE VIEW student_marks AS
         JOIN exams ex ON sa.exam_id = ex.exam_id
         JOIN courses co ON ex.course_abbreviation = co.course_abbreviation
         JOIN last_exam_dates le ON ex.exam_id = le.exam_id AND es.student_id = le.student_id
-        JOIN summary_points sp ON es.student_id = sp.student_id AND ex.exam_id = sp.exam_id AND re.exam_date_number = sp.exam_date_number
+        LEFT JOIN exam_elaborations ea ON es.student_id = ea.student_id AND ex.exam_id = ea.exam_id AND re.exam_date_number = ea.exam_date_number
+        LEFT JOIN question_assessments qa ON ea.exam_elaboration_id = qa.exam_elaboration_id
         WHERE ex.type = 'term' AND re.exam_date_number = le.last_exam_date_number
         GROUP BY es.student_id, ex.academic_year, co.semester,  co.name, co.course_abbreviation, sa.points_so_far
         ORDER BY course_name;
 
--- TODO: add some materialized view
+-- Write marks only for currently logged in user
+CREATE VIEW my_marks AS
+    SELECT semester, course_name, course_abbreviation, mark
+    FROM students_marks sm
+    JOIN enrolled_students es ON sm.student_id = es.student_id AND sm.academic_year = es.academic_year
+    JOIN users us ON es.student_id = us.user_id
+    WHERE us.login = LOWER(SYS_CONTEXT('USERENV','CURRENT_USER'));
 
+-- TODO: add some materialized view
 
 --------------------------------------------------------------------------------------------------------------- TRIGGERS
 -- Generating sequence for exam_date_number field in table exam_dates
@@ -868,8 +870,7 @@ GRANT SELECT ON exams_in_rooms TO xhavli56;
 GRANT SELECT ON rooms TO xhavli56;
 
 -- Use views for personal information
-GRANT SELECT ON student_marks TO xhavli56;
-
+GRANT SELECT ON my_marks TO xhavli56;
 
 ----------------------------------------------------------------------------------------------------------- TEST INSERTS
 -- Check generating sequence for exam_date_number (bi_tg_exam_dates_dk)
