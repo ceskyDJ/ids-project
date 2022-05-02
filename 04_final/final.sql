@@ -37,6 +37,7 @@ DROP TABLE users PURGE;
 
 -- Views
 DROP VIEW students_marks;
+DROP VIEW academics;
 DROP VIEW my_marks;
 DROP VIEW my_exam_dates;
 DROP VIEW my_available_exam_dates;
@@ -681,6 +682,12 @@ CREATE VIEW students_marks AS
         GROUP BY es.student_id, ex.academic_year, co.semester,  co.name, co.course_abbreviation, sa.points_so_far
         ORDER BY course_name;
 
+-- Write public list of academics
+CREATE VIEW academics AS
+    SELECT le.lecturer_id, us.first_name, us.last_name, le.email, le.phone_number, le.room_label office
+        FROM users us
+        JOIN lecturers le ON us.user_id = le.lecturer_id;
+
 -- Write marks only for currently logged in user
 CREATE VIEW my_marks AS
     SELECT semester, course_name, course_abbreviation, mark
@@ -928,6 +935,7 @@ GROUP BY exam_date_number;
 GRANT SELECT ON courses TO xhavli56;
 GRANT SELECT ON course_guarantors TO xhavli56;
 GRANT SELECT ON lecturers_teaching_courses TO xhavli56;
+GRANT SELECT ON academics TO xhavli56;
 
 -- Access to information about exams and exam dates + where they are
 GRANT SELECT ON exams TO xhavli56;
