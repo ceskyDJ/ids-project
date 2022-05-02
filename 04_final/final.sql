@@ -950,6 +950,8 @@ GROUP BY exam_date_number;
 
 SELECT * FROM table(DBMS_XPLAN.DISPLAY());
 
+CREATE INDEX ix_question_assessments_id ON question_assessments (exam_elaboration_id DESC);
+
 ------------------------------------------------------------------------------------------------------------ PERMISSIONS
 -- Second user (xhavli56) acts like a student
 
