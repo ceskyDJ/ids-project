@@ -976,8 +976,8 @@ GRANT SELECT, ON COMMIT REFRESH, QUERY REWRITE ON my_available_exam_dates TO xha
 -- Allow creating views.
 GRANT CREATE VIEW TO xhavli56;
 
------------------------------------------------------------------------------------------------------- MATERIALIZED VIEW
-
+----------------------------------------------------------------------------------------------------- MATERIALIZED VIEWS
+-- Overview of courses created by student (user xhavli56)
 CREATE MATERIALIZED VIEW courses_info
     BUILD IMMEDIATE
     ENABLE QUERY REWRITE
@@ -990,8 +990,6 @@ AS
     SELECT (course_abbreviation || ' - ' ||  name) course, awarded_credits credits, (first_name || ' ' || last_name || ', '|| email || ', '|| office) guarantor
     FROM guarantors
     JOIN xsmahe01.courses USING (course_abbreviation);
-
-SELECT * FROM courses_info;
 
 -- Due to REFRESH ON COMMIT not being available (problematic privileges)
 -- and courses and their details not changing often; refreshing is (would be) done manually.
@@ -1040,3 +1038,6 @@ SELECT * FROM students_marks;
 
 -- Test for my_marks view - it should write marks for logged in user
 SELECT * FROM my_marks;
+
+-- Test for materialized view courses_info
+SELECT * FROM courses_info;
