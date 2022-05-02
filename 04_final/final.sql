@@ -41,13 +41,9 @@ DROP VIEW academics;
 DROP VIEW my_marks;
 DROP VIEW my_exam_dates;
 DROP VIEW my_available_exam_dates;
+DROP MATERIALIZED VIEW courses_info;
 
--- Indexes (removed with tables)
--- DROP INDEX ix_exam_elaborations_exam_id;
--- DROP INDEX ix_question_assessments_exam_elaboration_id;
-
--- TODO: REVOKEs?
-
+-- Indexes and privileges removed by dropping tables
 
 ----------------------------------------------------------------------------------------------------------------- TABLES
 -- Users
@@ -410,7 +406,7 @@ INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
     VALUES (73, 1, 'written', 8, TO_TIMESTAMP('2022-03-30 10:00:00', 'yyyy-mm-dd hh24:mi:ss'), TO_TIMESTAMP('2022-03-19 20:00:00', 'yyyy-mm-dd hh24:mi:ss'), TO_TIMESTAMP('2023-03-19 20:00:00', 'yyyy-mm-dd hh24:mi:ss'), 800);
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
-    VALUES (73, 2, 'written', 8, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 600);
+    VALUES (73, 2, 'written', 8, TO_TIMESTAMP('2022-03-30 10:00:00', 'yyyy-mm-dd hh24:mi:ss'), TO_TIMESTAMP('2022-03-19 20:00:00', 'yyyy-mm-dd hh24:mi:ss'), TO_TIMESTAMP('2023-03-19 20:00:00', 'yyyy-mm-dd hh24:mi:ss'), 800);
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
     VALUES (73, 3, 'written', 7, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 300);
 
@@ -811,35 +807,42 @@ BEGIN
         RETURN;
     END IF;
 
--- TODO don't really know how to do it nicely and differentiate between NO_DATA_FOUND exceptions
---    WITH last_exam_date AS (
---        SELECT exam_id, MAX(exam_date_number) exam_date_number
---        FROM registered_exam_dates rd
---        WHERE rd.student_id = in_student_id AND rd.exam_id = in_exam_id AND rd.academic_year = in_academic_year
---        GROUP BY exam_id
---    )
---    SELECT time_of_exam, exam_date_number
---    INTO v_time_of_exam, v_max_existing_exam_date
---    FROM last_exam_date
---    JOIN exam_dates USING (exam_id, exam_date_number);
---   IF v_time_of_exam >= CURRENT_TIMESTAMP THEN
---       RAISE_APPLICATION_ERROR(-20003, 'Cannot register next exam date before the previous took place!');
---    END IF;
+    BEGIN
+        WITH last_exam_date AS (
+            SELECT exam_id, MAX(exam_date_number) exam_date_number
+            FROM registered_exam_dates rd
+            WHERE rd.student_id = in_student_id AND rd.exam_id = in_exam_id AND rd.academic_year = in_academic_year
+            GROUP BY exam_id
+        )
+        SELECT time_of_exam, exam_date_number
+        INTO v_time_of_exam, v_max_existing_exam_date
+        FROM last_exam_date
+        JOIN exam_dates USING (exam_id, exam_date_number);
+
+        IF v_time_of_exam >= CURRENT_TIMESTAMP THEN
+           RAISE_APPLICATION_ERROR(-20003, 'Cannot register next exam date before the previous took place!');
+        END IF;
+
+        EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            DBMS_OUTPUT.PUT_LINE('Registering first exam date.');
+    END;
 
     SELECT registration_start
         INTO v_reg_start
-        FROM exam_dates ed
-        WHERE ed.exam_id = in_exam_id AND ed.exam_date_number = in_exam_date_number;
+        FROM exam_dates
+        WHERE exam_id = in_exam_id AND exam_date_number = in_exam_date_number;
 
     SELECT registration_end
         INTO v_reg_end
-        FROM exam_dates ed
-        WHERE ed.exam_id = in_exam_id AND ed.exam_date_number = in_exam_date_number;
+        FROM exam_dates
+        WHERE exam_id = in_exam_id AND exam_date_number = in_exam_date_number;
 
     IF (CURRENT_TIMESTAMP < v_reg_start) THEN
         RAISE_APPLICATION_ERROR(-20003, 'Registration for exam date ' || in_exam_date_number || ' of exam ' || in_exam_id ||
                              ' has not yet started!');
     ELSIF (CURRENT_TIMESTAMP > v_reg_end) THEN
+        DBMS_OUTPUT.PUT_LINE(v_reg_end);
         RAISE_APPLICATION_ERROR(-20003, 'Registration for exam date ' || in_exam_date_number || ' of exam ' || in_exam_id ||
                              ' has already ended!');
     ELSE
@@ -908,10 +911,12 @@ BEGIN
 END;
 
 ---------------------------------------------------------------------------------------------------------------- INDEXES
+drop index ix_exam_elaborations_exam_id;
 CREATE INDEX ix_exam_elaborations_exam_id ON exam_elaborations (exam_id);
 -- improves 6: TABLE ACCESS FULL -> TABLE ACCESS BY INDEX ROWID BATCHED, INDEX RANGE SCAN
 
 EXPLAIN PLAN FOR
+-- What are average assessments in exam dates of exam with ID 62?
 WITH summary_results AS (
     SELECT exam_date_number, student_id, SUM(qa.awarded_points) students_summary_points
         FROM enrolled_students st
@@ -926,7 +931,7 @@ SELECT exam_date_number, AVG(students_summary_points) points_average
 FROM summary_results
 GROUP BY exam_date_number;
 
---SELECT * FROM table(DBMS_XPLAN.DISPLAY());
+SELECT * FROM table(DBMS_XPLAN.DISPLAY());
 
 ------------------------------------------------------------------------------------------------------------ PERMISSIONS
 -- Second user (xhavli56) acts like a student
@@ -955,7 +960,21 @@ GRANT CREATE VIEW TO xhavli56;
 
 ------------------------------------------------------------------------------------------------------ MATERIALIZED VIEW
 
---TODO need to do materialized view using tables I'm granted access to
+CREATE MATERIALIZED VIEW courses_info
+    BUILD IMMEDIATE
+    REFRESH ON COMMIT
+    ENABLE QUERY REWRITE
+AS
+    WITH guarantors as (
+        SELECT course_abbreviation, first_name, last_name, email, office
+        FROM XSMAHE01.academics
+        JOIN course_guarantors ON lecturer_id = guarantor_id
+    )
+    SELECT (course_abbreviation || ' - ' ||  name) course, awarded_credits credits, (first_name || ' ' || last_name || ', '|| email || ', '|| office) guarantor
+    FROM guarantors
+    JOIN courses USING (course_abbreviation);
+
+SELECT * FROM courses_info;
 
 ------------------------------------------------------------------------------------------------------------------ TESTS
 -- Check generating sequence for exam_date_number (bi_tg_exam_dates_dk)
