@@ -911,12 +911,29 @@ BEGIN
 END;
 
 ---------------------------------------------------------------------------------------------------------------- INDEXES
-drop index ix_exam_elaborations_exam_id;
+-- Without explicitly created index
+EXPLAIN PLAN FOR
+WITH summary_results AS (
+    SELECT exam_date_number, student_id, SUM(qa.awarded_points) students_summary_points
+    FROM enrolled_students st
+             JOIN registered_exam_dates rd USING (student_id, academic_year)
+             JOIN exam_dates ed USING (exam_id, exam_date_number)
+             JOIN exam_elaborations el USING (student_id, academic_year, exam_id, exam_date_number)
+             JOIN question_assessments qa USING (exam_elaboration_id)
+    WHERE exam_id = 62
+    GROUP BY exam_date_number, student_id
+)
+SELECT exam_date_number, AVG(students_summary_points) points_average
+FROM summary_results
+GROUP BY exam_date_number;
+
+SELECT * FROM table(DBMS_XPLAN.DISPLAY());
+
 CREATE INDEX ix_exam_elaborations_exam_id ON exam_elaborations (exam_id);
 -- improves 6: TABLE ACCESS FULL -> TABLE ACCESS BY INDEX ROWID BATCHED, INDEX RANGE SCAN
 
+-- With created index
 EXPLAIN PLAN FOR
--- What are average assessments in exam dates of exam with ID 62?
 WITH summary_results AS (
     SELECT exam_date_number, student_id, SUM(qa.awarded_points) students_summary_points
         FROM enrolled_students st
