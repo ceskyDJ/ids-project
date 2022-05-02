@@ -954,25 +954,24 @@ CREATE INDEX ix_question_assessments_id ON question_assessments (exam_elaboratio
 
 ------------------------------------------------------------------------------------------------------------ PERMISSIONS
 -- Second user (xhavli56) acts like a student
-
 -- Access to taught courses nad information about guarantors and lecturers
-GRANT SELECT ON courses TO xhavli56;
-GRANT SELECT ON course_guarantors TO xhavli56;
-GRANT SELECT ON lecturers_teaching_courses TO xhavli56;
-GRANT SELECT ON academics TO xhavli56;
+GRANT SELECT, ON COMMIT REFRESH, QUERY REWRITE ON courses TO xhavli56;
+GRANT SELECT, ON COMMIT REFRESH, QUERY REWRITE ON course_guarantors TO xhavli56;
+GRANT SELECT, ON COMMIT REFRESH, QUERY REWRITE ON lecturers_teaching_courses TO xhavli56;
+GRANT SELECT, ON COMMIT REFRESH, QUERY REWRITE ON academics TO xhavli56;
 
 -- Access to information about exams and exam dates + where they are
-GRANT SELECT ON exams TO xhavli56;
-GRANT SELECT ON exam_dates TO xhavli56;
-GRANT SELECT ON exams_in_rooms TO xhavli56;
+GRANT SELECT, ON COMMIT REFRESH, QUERY REWRITE ON exams TO xhavli56;
+GRANT SELECT, ON COMMIT REFRESH, QUERY REWRITE ON exam_dates TO xhavli56;
+GRANT SELECT, ON COMMIT REFRESH, QUERY REWRITE ON exams_in_rooms TO xhavli56;
 
 -- Access to information about available rooms
-GRANT SELECT ON rooms TO xhavli56;
+GRANT SELECT, ON COMMIT REFRESH, QUERY REWRITE ON rooms TO xhavli56;
 
 -- Use views for personal information about study
-GRANT SELECT ON my_marks TO xhavli56;
-GRANT SELECT ON my_exam_dates TO xhavli56;
-GRANT SELECT ON my_available_exam_dates TO xhavli56;
+GRANT SELECT, ON COMMIT REFRESH, QUERY REWRITE ON my_marks TO xhavli56;
+GRANT SELECT, ON COMMIT REFRESH, QUERY REWRITE ON my_exam_dates TO xhavli56;
+GRANT SELECT, ON COMMIT REFRESH, QUERY REWRITE ON my_available_exam_dates TO xhavli56;
 
 -- Allow creating views.
 GRANT CREATE VIEW TO xhavli56;
@@ -981,7 +980,6 @@ GRANT CREATE VIEW TO xhavli56;
 
 CREATE MATERIALIZED VIEW courses_info
     BUILD IMMEDIATE
-    REFRESH ON COMMIT
     ENABLE QUERY REWRITE
 AS
     WITH guarantors as (
@@ -994,6 +992,12 @@ AS
     JOIN xsmahe01.courses USING (course_abbreviation);
 
 SELECT * FROM courses_info;
+
+-- Due to REFRESH ON COMMIT not being available (problematic privileges)
+-- and courses and their details not changing often; refreshing is (would be) done manually.
+BEGIN
+    DBMS_MVIEW.REFRESH('courses_info', method=>'?');
+END;
 
 ------------------------------------------------------------------------------------------------------------------ TESTS
 -- Check generating sequence for exam_date_number (bi_tg_exam_dates_dk)
