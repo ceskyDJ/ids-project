@@ -986,12 +986,12 @@ CREATE MATERIALIZED VIEW courses_info
 AS
     WITH guarantors as (
         SELECT course_abbreviation, first_name, last_name, email, office
-        FROM XSMAHE01.academics
-        JOIN course_guarantors ON lecturer_id = guarantor_id
+        FROM xsmahe01.academics
+        JOIN xsmahe01.course_guarantors ON lecturer_id = guarantor_id
     )
     SELECT (course_abbreviation || ' - ' ||  name) course, awarded_credits credits, (first_name || ' ' || last_name || ', '|| email || ', '|| office) guarantor
     FROM guarantors
-    JOIN courses USING (course_abbreviation);
+    JOIN xsmahe01.courses USING (course_abbreviation);
 
 SELECT * FROM courses_info;
 
