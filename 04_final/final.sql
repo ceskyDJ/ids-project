@@ -407,7 +407,7 @@ INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
     VALUES (70, 2, 'written', 7, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 400);
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
-    VALUES (73, 1, 'written', 8, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 800);
+    VALUES (73, 1, 'written', 8, TO_TIMESTAMP('2022-03-30 10:00:00', 'yyyy-mm-dd hh24:mi:ss'), TO_TIMESTAMP('2022-03-19 20:00:00', 'yyyy-mm-dd hh24:mi:ss'), TO_TIMESTAMP('2023-03-19 20:00:00', 'yyyy-mm-dd hh24:mi:ss'), 800);
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
     VALUES (73, 2, 'written', 8, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 600);
 INSERT INTO exam_dates (exam_id, exam_date_number, format, no_questions, time_of_exam, registration_start, registration_end, student_capacity)
@@ -453,11 +453,7 @@ INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date
 INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
     VALUES (230974, '2021/2022', 73, 1);
 INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
-    VALUES (231754, '2021/2022', 73, 1);
-INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
     VALUES (231754, '2021/2022', 33, 1);
-INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
-    VALUES (231754, '2021/2022', 73, 2);
 INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
     VALUES (230365, '2021/2022', 62, 1);
 INSERT INTO registered_exam_dates (student_id, academic_year, exam_id, exam_date_number)
@@ -716,8 +712,6 @@ CREATE VIEW my_available_exam_dates AS
         JOIN users us ON es.student_id = us.user_id
         WHERE us.login = LOWER(SYS_CONTEXT('USERENV','CURRENT_USER')) AND CURRENT_TIMESTAMP BETWEEN ed.registration_start AND ed.registration_end;
 
--- TODO: add some materialized view
-
 --------------------------------------------------------------------------------------------------------------- TRIGGERS
 -- Generating sequence for exam_date_number field in table exam_dates
 CREATE OR REPLACE TRIGGER bi_tg_exam_dates_dk BEFORE INSERT ON exam_dates FOR EACH ROW
@@ -780,6 +774,7 @@ BEGIN
                 || :NEW.exam_id || ' in ' || :NEW.academic_year || '! Maximum of 1 already reached!');
 END;
 
+--------------------------------------------------------------------------------------------------------------- PROCEDURES
 CREATE OR REPLACE PROCEDURE usp_register_exam_date (
     in_student_id students_admitted_to_exams.student_id%type,
     in_academic_year students_admitted_to_exams.academic_year%type,
@@ -790,9 +785,10 @@ IS
     v_reg_end exam_dates.registration_end%type;
     v_max_existing_exam_date exam_dates.exam_date_number%type;
     v_exam_admission students_admitted_to_exams%rowtype;
+    v_time_of_exam exam_dates.time_of_exam%type;
 BEGIN
 
-    -- Check student is admitted
+    -- Check student is admitted, if not, throws NO_DATA_FOUND
     SELECT *
         INTO v_exam_admission
         FROM students_admitted_to_exams sae
@@ -807,6 +803,21 @@ BEGIN
         RAISE_APPLICATION_ERROR(-20002, 'Cannot register not existing exam date number ' || in_exam_date_number || ' for exam ' || in_exam_id || '.');
         RETURN;
     END IF;
+
+-- TODO don't really know how to do it nicely and differentiate between NO_DATA_FOUND exceptions
+--    WITH last_exam_date AS (
+--        SELECT exam_id, MAX(exam_date_number) exam_date_number
+--        FROM registered_exam_dates rd
+--        WHERE rd.student_id = in_student_id AND rd.exam_id = in_exam_id AND rd.academic_year = in_academic_year
+--        GROUP BY exam_id
+--    )
+--    SELECT time_of_exam, exam_date_number
+--    INTO v_time_of_exam, v_max_existing_exam_date
+--    FROM last_exam_date
+--    JOIN exam_dates USING (exam_id, exam_date_number);
+--   IF v_time_of_exam >= CURRENT_TIMESTAMP THEN
+--       RAISE_APPLICATION_ERROR(-20003, 'Cannot register next exam date before the previous took place!');
+--    END IF;
 
     SELECT registration_start
         INTO v_reg_start
@@ -853,7 +864,6 @@ BEGIN
     WHEN NO_DATA_FOUND THEN
         RAISE_APPLICATION_ERROR(-20004, 'User' || SYS_CONTEXT('USERENV', 'CURRENT_USER') ||
                                 ' is not an enrolled student!');
-
 END;
 
 -- Assume given exam has a condition, where a single question evaluated by 0 points
@@ -894,10 +904,6 @@ END;
 CREATE INDEX ix_exam_elaborations_exam_id ON exam_elaborations (exam_id);
 -- improves 6: TABLE ACCESS FULL -> TABLE ACCESS BY INDEX ROWID BATCHED, INDEX RANGE SCAN
 
-CREATE INDEX ix_question_assessments_exam_elaboration_id ON question_assessments (exam_elaboration_id DESC);
--- does A LOT OF STUFF to 9: may not be better because INDEX FULL SCAN and the other stuff...
-COMMIT;
-
 EXPLAIN PLAN FOR
 WITH summary_results AS (
     SELECT exam_date_number, student_id, SUM(qa.awarded_points) students_summary_points
@@ -910,11 +916,10 @@ WITH summary_results AS (
         GROUP BY exam_date_number, student_id
 )
 SELECT exam_date_number, AVG(students_summary_points) points_average
-    FROM summary_results
-    GROUP BY exam_date_number;
+FROM summary_results
+GROUP BY exam_date_number;
 
-SELECT * FROM table(DBMS_XPLAN.DISPLAY());
-
+--SELECT * FROM table(DBMS_XPLAN.DISPLAY());
 
 ------------------------------------------------------------------------------------------------------------ PERMISSIONS
 -- Second user (xhavli56) acts like a student
@@ -937,6 +942,13 @@ GRANT SELECT ON my_marks TO xhavli56;
 GRANT SELECT ON my_exam_dates TO xhavli56;
 GRANT SELECT ON my_available_exam_dates TO xhavli56;
 
+-- Allow creating views.
+GRANT CREATE VIEW TO xhavli56;
+
+------------------------------------------------------------------------------------------------------ MATERIALIZED VIEW
+
+--TODO need to do materialized view using tables I'm granted access to
+
 ------------------------------------------------------------------------------------------------------------------ TESTS
 -- Check generating sequence for exam_date_number (bi_tg_exam_dates_dk)
 SELECT * FROM exam_dates WHERE exam_id = 33 ORDER BY exam_date_number DESC FETCH FIRST 1 ROW ONLY;
@@ -951,9 +963,12 @@ INSERT INTO question_assessments (exam_elaboration_id, question_number, lecturer
 SELECT * FROM question_assessments WHERE exam_elaboration_id = 101 ORDER BY question_number DESC FETCH FIRST 1 ROW ONLY;
 
 -- Zero out all questions from this specific exam if at least one question is evaluated by 0 points.
+SELECT * FROM question_assessments WHERE exam_elaboration_id IN (100, 150, 160);
 BEGIN
     usp_zero_out_results_if_zero_question(62, 1);
 END;
+COMMIT;
+SELECT * FROM question_assessments WHERE exam_elaboration_id IN (100, 150, 160);
 
 -- Check allowing students to register exam dates. Non existing exam date number 13.
 BEGIN
